@@ -609,7 +609,7 @@ footer {
     .carousel-next-button, .carousel-prev-button{
         display: none;
     }
-    .carousel-next-button2, .carousel-prev-button2{
+    .carousel-next-button, .carousel-prev-button{
         display: none;
     }
 }
