@@ -92,8 +92,7 @@ h1{
     position: absolute;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
-    top: 0;
+    margin-top: 1%;
     min-height: 100px;
 }
 .nav_landing_page a{
@@ -375,6 +374,7 @@ h1{
 /* --------equipe-------- */
 .all_members{
     justify-content: center;
+    align-items: start;
     display: flex;
     flex-wrap: wrap;
     flex-flow: auto;
@@ -383,9 +383,21 @@ h1{
 #estudantes,#professores{
     display: flex;
     flex-direction: column;
+    align-items: left;
+    justify-content: left;
     gap: 4vw;
     max-width: 570px;
     flex: 1 1 50%;
+}
+.professorescard, .estudantescard{
+    display: flex;
+    padding: 10px 25px 5px 25px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px 20px 0px 0px;
+    background: rgba(255, 255, 255, 0.25);
 }
 .profile_container {
     padding: 0.5vw;
