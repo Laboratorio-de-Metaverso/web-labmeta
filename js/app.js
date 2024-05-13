@@ -254,22 +254,38 @@ var APP = {
 
 		}
 
-		function onPointerMove( event ) {
+		var mouseXPrev = 0;
+		var mouseYPrev = 0;
+		var lerpFactor = 0.05; // Fator de interpolação (quanto menor, mais suave será o movimento)
 
+		function onPointerMove(event) {
 			var mouseX = (event.clientX / window.innerWidth) * 8 - 4;
 			var mouseY = (event.clientY / window.innerHeight) * 4 - 1;
 
 			var x = mouseX;
-			var y = 1.7; 
+			var y = 1.6; 
 			var z = mouseY;
+
+			// Calcular a nova posição usando interpolação
+			var newX = lerp(mouseXPrev, x, lerpFactor);
+			var newZ = lerp(mouseYPrev, z, lerpFactor);
+			var newY =  y - (Math.abs(newZ)  + (Math.abs(newX) -5 ) / 1.5) + 1.5;
 
 			var lightUuid = "42716ceb-0a15-41f2-956c-f2139413ba2b"; // UUID da luz
 			var light = scene.getObjectByProperty('uuid', lightUuid);
 
-			var newPosition = new THREE.Vector3(x, (y - (Math.abs(z - 1) + Math.abs(x - 1) / 2) ) + 0.5, z); // x, y, z da nova posição
+			var newPosition = new THREE.Vector3(newX, newY, newZ);
 			light.position.copy(newPosition); // Atualiza a posição do objeto de luz
 
+			mouseXPrev = newX;
+			mouseYPrev = newZ;
 		}
+
+		// Função de interpolação (lerp)
+		function lerp(a, b, t) {
+			return a + (b - a) * t;
+		}
+
 
 		function isMobileDevice() {
 			return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
