@@ -256,20 +256,20 @@ var APP = {
 
 		var mouseXPrev = 0;
 		var mouseYPrev = 0;
-		var lerpFactor = 0.05; // Fator de interpolação (quanto menor, mais suave será o movimento)
+		var lerpFactor = 0.1; // Fator de interpolação (quanto menor, mais suave será o movimento)
 
 		function onPointerMove(event) {
 			var mouseX = (event.clientX / window.innerWidth) * 8 - 4;
 			var mouseY = (event.clientY / window.innerHeight) * 4 - 1;
 
 			var x = mouseX;
-			var y = 1.6; 
+			var y = 1.1; 
 			var z = mouseY;
 
 			// Calcular a nova posição usando interpolação
 			var newX = lerp(mouseXPrev, x, lerpFactor);
 			var newZ = lerp(mouseYPrev, z, lerpFactor);
-			var newY =  y - (Math.abs(newZ)  + (Math.abs(newX) -5 ) / 1.5) + 1.5;
+			var newY =  y - (Math.abs(newZ)  + (Math.abs(newX) -5 ) / 1.5) ;
 
 			var lightUuid = "42716ceb-0a15-41f2-956c-f2139413ba2b"; // UUID da luz
 			var light = scene.getObjectByProperty('uuid', lightUuid);

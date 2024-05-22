@@ -193,7 +193,7 @@ h1{
 
 .video video {
     border-radius: var(--edge-roundness);
-    min-width: 400px;
+    min-width: 250px;
     max-width: 100%;
 }
 #sobrenos_1000plus{
@@ -380,16 +380,18 @@ h1{
     flex-flow: auto;
     gap: 4vw;
 }
-#estudantes,#professores{
+#estudantes, #professores{
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: left;
     gap: 4vw;
     max-width: 570px;
-    flex: 1 1 50%;
 }
 .professorescard, .estudantescard{
+    display: flex;
+    width: 100%;
+}
+
+.professorescard h2, .estudantescard h2{
     display: flex;
     padding: 10px 25px 5px 25px;
     box-sizing: border-box;
@@ -399,6 +401,8 @@ h1{
     border-radius: 20px 20px 0px 0px;
     background: rgba(255, 255, 255, 0.25);
 }
+
+
 .profile_container {
     padding: 0.5vw;
     display: flex;
