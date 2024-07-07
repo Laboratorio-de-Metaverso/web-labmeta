@@ -263,7 +263,7 @@ var APP = {
 			var mouseY = (event.clientY - (window.innerHeight / 2)) / (window.innerHeight / 10);
 
 			var x = mouseX;
-			var y = 0; 
+			var y = 0.4999; 
 			var z = mouseY;
 
 			// Calcular a nova posição usando interpolação
