@@ -263,7 +263,7 @@ var APP = {
 			var mouseY = (event.clientY - (window.innerHeight / 2)) / (window.innerHeight / 10);
 
 			var x = mouseX;
-			var y = 0.4999; 
+			var y = 0.499; 
 			var z = mouseY;
 
 			// Calcular a nova posição usando interpolação
@@ -291,12 +291,11 @@ var APP = {
 			return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 		}
 		
-		// No seu arquivo ap.js, você pode usar essa função da seguinte maneira:
 		if (!isMobileDevice()) {
 			// Coloque o código que deseja executar apenas se não for um dispositivo móvel aqui
-			console.log("Não é um dispositivo móvel!");
+			// console.log("Não é um dispositivo móvel!");
 		} else {
-			console.log("É um dispositivo móvel!");
+			// console.log("É um dispositivo móvel!");
 		}
 		
 
