@@ -392,12 +392,13 @@ h1{
 
 .professorescard h2, .estudantescard h2{
     display: flex;
+    flex: 1;
     padding: 10px 25px 5px 25px;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: var(--edge-roundness);
     background: rgba(255, 255, 255, 0.25);
 }
 
@@ -407,15 +408,14 @@ h1{
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
-    justify-content: center;
+    justify-content: left;
     align-items: flex-start;
     align-content: flex-start;
 }
 .grid_item{
-    display: flexbox;
     align-items: center;
-    flex: 1;
     width: 160px;
+    height: 420px;
 }
 .equipe h2{
     font-size: 24px;
