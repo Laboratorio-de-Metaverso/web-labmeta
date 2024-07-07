@@ -389,7 +389,7 @@
 					"color": 16777215,
 					"intensity": 9,
 					"distance": 0,
-					"decay": 1.2,
+					"decay": 1.68,
 					"shadow": {
 						"camera": {
 							"uuid": "a114a568-7081-49fb-94e4-66d91c58582c",
