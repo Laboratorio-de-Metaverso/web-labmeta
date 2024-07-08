@@ -20,6 +20,7 @@
     align-items: center;
     align-items: center;
 
+    scroll-behavior: smooth;
     scrollbar-color: var(--lm_white) var(--lm_black);
 }
 /* -------fundo------- */
@@ -84,6 +85,11 @@ h1{
 
 
 /* -------barra de nav------- */
+#menu36{
+    display: none;
+}
+
+
 .nav_landing_page{
     width: 100%;
     width: 100svw;
@@ -104,55 +110,47 @@ h1{
 .nav_principal{
     display: flex;
     position: sticky;
-    align-items: center;
     top: 0;
-    width: 100%;
-    width: 100svw;
-    height: 80px;
+    animation: appear_wscroll;
+    animation-timeline: scroll();
     background: var(--lm_black 70);
     backdrop-filter: blur(40px);
-    animation: appear_wscroll;
-    animation-timeline: view();
+    height: 80px;
     z-index: 2;
 }
-.navcel{
-    display: none;
-}
-.navpc{
+.barra_de_nav{
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    gap: 2vw;
+    padding: 2vw;
+    background: var(--lm_black 70);
 }
 
 .navbar_logo{
-    height: 1.5em;
-    cursor: pointer;
-    box-sizing: border-box;
     margin-left: 4vw;
+    height: 1.5em;
+    box-sizing: border-box;
 }
 .barra_de_nav ul{
     list-style-type: none;
-    background: #020402a6;
-    backdrop-filter: blur(40px);
-
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 .barra_de_nav a{
     line-height: normal;
     text-align: center;
     text-decoration: none;
-    padding: 2vw;
-    display: block;
 }
 .barra_de_nav li{
-    float: left;
     text-wrap: nowrap;
+    margin: 0 10px;
 }
 .barra_de_nav a:hover{
     text-decoration: underline;
 }
 @keyframes appear_wscroll{
     0%{opacity: 0;}
-    30%{opacity: 1;}
+    17%{opacity: 1;}
 }
 
 
@@ -480,7 +478,7 @@ footer {
     padding: 5%;
     align-items: normal;
     box-sizing: border-box;
-    background: linear-gradient(94deg, #000 3.28%, rgba(0, 0, 0, 0.81) 100%);
+    background: linear-gradient(90deg, #000 3.28%, rgba(0, 0, 0, 0.81) 100%);
 }
 
 .fup {
@@ -542,7 +540,7 @@ footer {
     flex-direction: row;
     /* width: 50%; */
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .logos {
@@ -560,73 +558,6 @@ footer {
         overflow-x: hidden;
     }
     /* header para celular */
-    .navpc{
-        display: none;
-        position: absolute;
-        flex-direction: column;
-        width: 100%;
-        width: 100svw;
-        height: 500px;
-        top: 100%;
-        background: linear-gradient(180deg, rgba(71, 71, 71, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%);
-        backdrop-filter: blur(20px);
-    }
-    .navpc img{
-        display: none;
-    }
-    .barra_de_nav{
-        display: flex;
-        width: 100%;
-        width: 100svw;
-        height: 100%;
-    }
-    .navbar_logo{
-        height: 1.5em;
-        cursor: pointer;
-        box-sizing: border-box;
-        /* margin-left: 4vw; */
-    }
-    .barra_de_nav ul{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        width: 100svw;
-        height: 100%;
-        text-align: center;
-        gap: 17.5px;
-        padding: 10%;
-        box-sizing: border-box;
-        font-size: 35px;
-        font-weight: 300;
-    }
-    .navcel{
-        display: flex;
-    }
-    .nav_principal{
-        justify-content: start;
-        align-items: center;
-        box-sizing: border-box;
-        padding: 0px 0px;
-    }
-    .navcel{
-        display: flex;
-        width: 100%;
-        width: 100svw;
-        justify-content: space-around;
-    }
-    .b1{
-        display: none;
-    }
-
-    .navcel img:nth-of-type(1) {
-        display: flex;
-        height: 1.5em;
-    }
-    
-    .navcel img:nth-of-type(2) {
-        display: flex;
-        height: 1.5em;
-    }
 
     .fup img {
         margin-bottom: 2%;
@@ -638,4 +569,98 @@ footer {
     .carousel-next-button2, .carousel-prev-button2{
         display: none;
     }
+
+    /* navbar */
+    .nav_landing_page ul{
+        flex-direction: column;
+        margin-top: 25vh;
+        background: #000000d2;
+        border-radius: var(--edge-roundness);
+    }
+    .nav_landing_page{
+        justify-content: center;
+        width: fit-content;
+    }
+
+    .nav_principal{
+        justify-content: space-evenly;
+    }
+
+    .navbar_logo{
+        margin: 0;
+        height: 1.5em;
+        box-sizing: border-box;
+    }
+
+    nav .navListContent{
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0px;
+        right: 0px;
+        background-color: #000000cf;
+    }
+    .barra_de_nav li{
+        width: 100%;
+    }
+    .barra_de_nav a{
+        text-align: center;
+        padding: 20px;
+        display: block;
+    }
+    nav .menu_toggle{
+        display: block;
+        margin-right: 10vw;
+    }
+
+    nav .menu_toggle span{
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: var(--lm_white);
+        margin: 25px;
+        cursor: pointer;
+    }
+
+    nav .menu_toggle span:nth-last-of-type(1) {
+        position: absolute;
+        top: 0px;
+        transition: top .15s .15s, transform .15s;
+    }
+    nav .menu_toggle span:nth-last-of-type(2){
+        position: absolute;
+        top: 10px;
+        transition: top .15s .15s, transform .15s;
+    }
+    nav .menu_toggle span:nth-last-of-type(3){
+        position: absolute;
+        top: 20px;
+        transition: top .15s .15s, transform .15s;
+    }
+    nav .menu_toggle span:nth-last-of-type(4){
+        position: absolute;
+        top: 0px;
+        width: 30px;
+        height: 30px;
+        background-color: #00000000;
+    }
+
+    nav .menu_toggle.active span:nth-last-of-type(1) {
+        position: absolute;
+        top: 10px;
+        transform: rotate(45deg);
+        transition: top .15s, transform .15s .15s;
+    }
+    nav .menu_toggle.active span:nth-last-of-type(2), nav .menu_toggle.active span:nth-last-of-type(3) {
+        position: absolute;
+        top: 10px;
+        transform: rotate(-45deg);
+        transition: top .15s, transform .15s .15s;
+    }
+
+    nav .menu_toggle.active+.navListContent{
+        display: flex;
+    }
+
 }

@@ -16,28 +16,8 @@
 <body>
     <!--cena 3D--------------------------------------------------------->
     <section id="test"> 
-        <header class="nav_landing_page">
-            <nav class="barra_de_nav b1">
-                <ul>
-                    <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
-                    <li><a href="#eventos">Eventos</a></li>
-                    <li><a href="#artigos">Artigos</a></li>
-                    <li><a href="#equipe">Equipe</a></li>
-                    <li><a href="#foot">Contato</a></li>
-                </ul>
-            </nav>
-        </header>
-    </section>
-    <!--barra de navegacao---------------------------------------------->
-    <header class="nav_principal">
-        <div class="navcel">
-            <img src="assets/logos/navbar_logo.svg">
-            <img id="sanduiche" src="assets/logos/menu_sanduiche.svg">
-        </div>
-        <div class="navpc">
-            <img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta">
-            <nav class="barra_de_nav b2">
+        <div class="nav_landing_page">
+            <nav class="barra_de_nav" id="nav_landing_page">
                 <ul>
                     <li><a href="#sobre">Sobre Nós</a></li>
                     <li><a href="#projetos">Projetos</a></li>
@@ -48,511 +28,551 @@
                 </ul>
             </nav>
         </div>
-    </header>
-    <script>    
-        let sanduiche = document.getElementById('sanduiche'); //botão do sanduiche
-        const nav = document.querySelector('.navpc'); //lista 
-        var aux = 0; //0 se desativado, 1 se ativado
-
-        /* se desativada, a lista fica visivel e aux sinaliza 1 e retorna
-            se ativada, aux sinaliza 0 e a nav fica invisivel */
-        sanduiche.addEventListener("click", function(){
-            if (aux == 0){ 
-                nav.style.display = "flex";
-                aux = 1;
-                return;
-            }
-            aux = 0;
-            nav.style.display = "none";
-        });
-
-        nav.addEventListener("click", function(){
-            nav.style.display = "none";
-        })
-    </script>
-    <!--sobre----------------------------------------------------------->
-    <section id="sobre"> 
-        <div class="container">
-            <div class="text_box"> <!--caixa de texto que segura a parte esquerda dos elementos-->
-                <!-- os h1 e hr compoem o header principal -->
-                <h1>Sobre Nós</h1> 
-                <hr class="h1_divider">
-                <p>O Laboratório de Metaverso - LabMeta, vinculado à Universidade Federal do Paraná (UFPR), destaca-se ao oferecer assessoria em modelagem tridimensional e computacional, especializando-se em prototipagem virtual para diversos ambientes. Utilizando tecnologias como Realidade Virtual, Aumentada, Mista e escaneamento buscamos proporcionar experiências imersivas e interativas através da união entre pesquisa e desenvolvimento prático.</p>
-                <!-- um div para o 1000+... e 10+... reutilizando o class container -->
-                por ser um elemento 
-                <div class="container" style="gap: 4vw;">
-                    <div style="flex: 1; margin-top: 50px;">
-                        <p id="sobrenos_1000plus">1000+</p>
-                        <p style="font-size: 22px; color: #4BDBAB;">pessoas impactadas com nossas demonstrações</p>
-                    </div>
-                    <div style="flex: 1;">
-                        <p id="sobrenos_10plus">10+</p>
-                        <p style="font-size: 22px; color: #00A7E1;">artigos publicados</p>
-                    </div>
-                </div>
-            </div>
-            <div class="video">
-                <video muted autoplay loop>
-                    <source src="assets/video.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
     </section>
-    <!--projetos-------------------------------------------------------->
-    <section id="projetos">
-        <h1>Projetos</h1> 
-        <hr class="h1_divider">
-        <div class="carouselview">
-            <button id="carousel-prev-button" class="carousel-prev-button"></button>
-            <div id="scrolling-wrapper" class="scrolling-wrapper">
-
-            </div>
-            <button id="carousel-next-button" class="carousel-next-button"></button>
-        </div>
-    </section>
-    <script>
-    //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
-    const scrollingWrapper = document.querySelector(".scrolling-wrapper");
-    $(document).ready(function(){
-        var conteudoDoArquivo;
-
-        $.get('assets/projects/qnt.txt', function(data, status) {
-                conteudoDoArquivo = parseInt(data);
-
-                for (var i = 1; i <= conteudoDoArquivo; i++) {
-                    // create a new card element
-                    const card = document.createElement("div");
-                    card.classList.add("card", "card" + i);
-
-                    // create image-container div
-                    const imageContainer = document.createElement("div");
-                    imageContainer.classList.add("imagecontainer", "projeto" + i);
-                    imageContainer.style.backgroundImage = "url(assets/projects/projeto" + i + "/img1.jpg)";
-
-                    // create gradient overlay for the image
-                    const gradientOverlay = document.createElement("div");
-                    gradientOverlay.classList.add("imagecontainer-overlay");
-
-                    // create button
-                    const infoButton = document.createElement("button");
-                    infoButton.classList.add("info-button");
-                    infoButton.textContent = "Mais Informações";
-
-                    // create a header text with class
-                    const headerText = document.createElement("h2");
-                    headerText.classList.add("card-header");
-
-                    // carrega o título do projeto
-                    $.get('assets/projects/projeto' + i + '/titulo.txt', function(data, status) {
-                        const titulo = data;
-                        headerText.textContent = titulo;
-                    });
-
-                    // append the header text to the image container
-                    gradientOverlay.appendChild(headerText);
-
-                    // append overlay to the image container
-                    imageContainer.appendChild(gradientOverlay);
-
-                    // append the image container to the card
-                    card.appendChild(imageContainer);
-
-                    // set the content of the card to the text file content
-                    const contentText = document.createElement("p");
-                    contentText.classList.add("card-content");
-
-                    // carrega a descrição do projeto
-                    $.get('assets/projects/projeto' + i + '/descricao.txt', function(data, status) {
-                        const descricao = data;
-                        contentText.textContent = descricao;
-                    });
-
-                    // append the content text to the card
-                    card.appendChild(contentText);
-
-                    // append the card to the scrolling wrapper
-                    scrollingWrapper.appendChild(card);
-
-                    // append more info button to the card
-                    card.appendChild(infoButton);
-                }
-
-                    /* muda as imagens quando essas são clicadas */
-                    var aux = 2; //começa na primeira imagem entao deve ir para a 2
-                    const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
-
-                    imagecontainers.forEach(imageContainer => {
-                        imageContainer.addEventListener('click', function() {
-                            if (aux == 4) {
-                            aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
-                        }
-                        aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
-                        this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
-                        });
-                    });
-
-                /* função para botões funcionarem */
-
-                const prevButton = document.getElementById("carousel-prev-button");
-                const nextButton = document.getElementById("carousel-next-button");
-
-                const card = document.querySelector(".card");
-                const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
-
-                prevButton.addEventListener("click", function() {
-                    scrollingWrapper.scrollBy({
-                        left: -(cardWidth),
-                        behavior: "smooth"
-                    });
-                });
-
-                nextButton.addEventListener("click", function() {
-                    scrollingWrapper.scrollBy({
-                        left: cardWidth,
-                        behavior: "smooth"
-                    });
-                });
-        });
-    });
-
-    </script>
-
-     <!--eventos-------------------------------------------------------->
-     <section id="eventos">
-        <h1>Eventos</h1> 
-        <hr class="h1_divider2">
-        <div class="carouselview2">
-            <button id="carousel-prev-button2" class="carousel-prev-button2"></button>
-            <div id="scrolling-wrapper2" class="scrolling-wrapper2">
-
-            </div>
-            <button id="carousel-next-button2" class="carousel-next-button2"></button>
-        </div>
-    </section>
-    <script>
-    //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
-    const scrollingWrapper2 = document.querySelector(".scrolling-wrapper2");
-    $(document).ready(function(){
-        var conteudoDoArquivo2;
-
-        $.get('assets/events/qnt.txt', function(data, status) {
-                conteudoDoArquivo2 = parseInt(data);
-
-                for (var i = 1; i <= conteudoDoArquivo2; i++) {
-                    // create a new card element
-                    const card2 = document.createElement("div");
-                    card2.classList.add("card2", "card2" + i);
-
-                    // create image-container div
-                    const imageContainer2 = document.createElement("div");
-                    imageContainer2.classList.add("imagecontainer2", "event" + i);
-                    imageContainer2.style.backgroundImage = "url(assets/events/event" + i + "/img1.jpg)";
-
-                    // create gradient overlay for the image
-                    const gradientOverlay2 = document.createElement("div");
-                    gradientOverlay2.classList.add("imagecontainer-overlay2");
-
-                    // create button
-                    const infoButton2 = document.createElement("button");
-                    infoButton2.classList.add("info-button2");
-                    infoButton2.textContent = "Mais Informações";
-
-                    // create a header text with class
-                    const headerText2 = document.createElement("h2");
-                    headerText2.classList.add("card-header2");
-
-                    // carrega o título do projeto
-                    $.get('assets/events/event' + i + '/titulo.txt', function(data, status) {
-                        const titulo2 = data;
-                        headerText2.textContent = titulo2;
-                    });
-
-                    // append the header text to the image container
-                    gradientOverlay2.appendChild(headerText2);
-
-                    // append overlay to the image container
-                    imageContainer2.appendChild(gradientOverlay2);
-
-                    // append the image container to the card
-                    card2.appendChild(imageContainer2);
-
-                    // set the content of the card to the text file content
-                    const contentText2 = document.createElement("p");
-                    contentText2.classList.add("card-content2");
-
-                    // carrega a descrição do projeto
-                    $.get('assets/events/event' + i + '/descricao.txt', function(data, status) {
-                        const descricao2 = data;
-                        contentText2.textContent = descricao2;
-                    });
-
-                    // append the content text to the card
-                    card2.appendChild(contentText2);
-
-                    // append the card to the scrolling wrapper
-                    scrollingWrapper2.appendChild(card2);
-
-                    // append more info button to the card
-                    card2.appendChild(infoButton2);
-                }
-
-                    /* muda as imagens quando essas são clicadas */
-                    var aux = 2; //começa na primeira imagem entao deve ir para a 2
-                    const imagecontainers2 = document.querySelectorAll('.imagecontainer2'); //div com fundo img
-
-                    imagecontainers2.forEach(imageContainer2 => {
-                        imageContainer2.addEventListener('click', function() {
-                            if (aux == 4) {
-                            aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
-                        }
-                        aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
-                        this.style.backgroundImage = "url(assets/events/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
-                        });
-                    });
-
-                /* função para botões funcionarem */
-
-                const prevButton = document.getElementById("carousel-prev-button2");
-                const nextButton = document.getElementById("carousel-next-button2");
-
-                const card = document.querySelector(".card");
-                const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
-
-                prevButton.addEventListener("click", function() {
-                    scrollingWrapper2.scrollBy({
-                        left: -(cardWidth),
-                        behavior: "smooth"
-                    });
-                });
-
-                nextButton.addEventListener("click", function() {
-                    scrollingWrapper2.scrollBy({
-                        left: cardWidth,
-                        behavior: "smooth"
-                    });
-                });
-        });
-    });
-
-    </script>
-
-
-    <!--artigos--------------------------------------------------------->
-    <section id="artigos">
-        <h1>Publicações</h1>
-        <hr class="h1_divider">
-        <p id="artigos_importados">artigos vão aqui</p>
-    </section>
-    <script> // Style every second line
-        $(document).ready(function(){
-            $('#artigos_importados').load('assets/lista_artigos.txt', function(response, status, xhr) {
-                if (status == "error") {
-                    console.error("Error loading the file: " + xhr.status + " " + xhr.statusText);
-                } else {
-                    console.log('File loaded successfully');
-
-                    var content = $(this).text(); // Get the text content of the loaded file
-                    var lines = content.split('\n'); // Split the content into lines based on newline
-                    var styledContent = ''; // Variable to store styled content
-                    for (var i = 0; i < lines.length; i++) {
-                        // Check if the line number is a multiple of 4 or 3
-                        if ((i + 1) % 2 === 0) {
-                        styledContent += '<span class="second">' + lines[i] + '</span><br>'; // Style every second line
-                        } else if ((i + 1) % 3 === 0) {
-                        styledContent += '<span class="third">' + lines[i] + '</span><br>'; // Style every third line
-                        } else {
-                        styledContent += '<span class="article_title">' + lines[i] + '</span><br>'; // Default styling for other lines
-                        }
-                    }
-                    $('#artigos_importados').html(styledContent); // Replace the content of the element with the styled content
-            }
-        });
-    });
-    </script>
-    </section>
-    <!--equipe---------------------------------------------------------->
-    <section class="equipe" id="equipe">
-        <h1>Equipe</h1>
-        <hr class="h1_divider">
-
-        <div class="all_members">
-            <div id="estudantes">
-                <div class="estudantescard"><h2>Estudantes</h2></div>
-                <div class="profile_container">
-                    <!-- 06 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p06.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Mariana Prokopowski</text></div>
-                            <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <a href="https://www.linkedin.com/in/mariana-prokopowiski-/"> <text class="ln">@mariana-prokopowiski-</text></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 07 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p07.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Mariana Almeida</text></div>
-                            <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <text class="ln">@Person.Name</text>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 08 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p08.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Sofia Simões</text></div>
-                            <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <a href="https://www.linkedin.com/in/eusofiasimoes/"> <text class="ln">@eusofiasimoes</text> </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 09 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p09.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Victoria Mariane</text></div>
-                            <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <text class="ln">@Person.Name</text>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 10 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p10.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Nickolas Quintino</text></div>
-                            <div class="profile_function"><text class="function">Pesquisador IC</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <text class="ln">@Person.Name</text>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 11 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p11.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Jun Zeredo</text></div>
-                            <div class="profile_function"><text class="function">Voluntário</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <a href="https://www.linkedin.com/in/junszeredo/"> <text class="ln">@junszeredo</text> </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="professores">
-                <div class="professorescard"><h2>Professores</h2></div>
-                <div class="profile_container">
-                    <!-- 03 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p03.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Prof. Dr. Márcio Catapan</text></div>
-                            <div class="profile_function"><text class="function">Coordenador</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <text class="ln">@marciocatapan</text>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 02 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p02.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Prof. Dra. Isabella Sierra</text></div>
-                            <div class="profile_function"><text class="function">Prof. Aux. de Pesquisa</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <text class="ln">@Person.Name</text>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 01 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p01.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Prof. Dr. Márcio Carboni</text></div>
-                            <div class="profile_function"><text class="function">Vice Coordenador</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <a href="https://www.linkedin.com/in/marciocarboni/"><text class="ln">@marciocarboni</text></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 04 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p04.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Msc. Fuad Pumarejo</text></div>
-                            <div class="profile_function"><text class="function">Doutorando</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <text class="ln">@Person.Name</text>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 05 ------------------------------------------------------------->
-                    <div class="grid_item">
-                        <div class="profile_image"><img src="assets/profiles/p05.png"></div>
-                        <div class="textg">
-                            <div class="profile_name"><text class="profile_name">Msc. Lucas Gregory</text></div>
-                            <div class="profile_function"><text class="function">Doutorando</text></div>
-                            <div class="ln">
-                                <img src="assets/logos/Linkedin.svg">
-                                <text class="ln">@Person.Name</text>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!------ CENA 3D --------------------------------------------------->
-    <script type="module">
-        import * as THREE from './js/three.module.js';
-        import { APP } from './js/app.js';
-
-        // Verifica se o dispositivo é um celular
-        function isMobileDevice() {
-            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-        }
-
-        // Se não for um celular, executa o código
-            window.THREE = THREE; // Used by APP Scripts.
-
-            var loader = new THREE.FileLoader();
-            loader.load( 'app.json', function ( text ) {
-
-                var player = new APP.Player();
-                player.load( JSON.parse( text ) );
-                player.setSize( window.innerWidth, window.innerHeight );
-                player.play();
-
-                var containerDiv = document.getElementById('test'); 
-                containerDiv.appendChild( player.dom );
-
-                window.addEventListener( 'resize', function () {
-                    player.setSize( window.innerWidth, window.innerHeight );
-                });
-
-            });
     
+    <!--barra de navegacao---------------------------------------------->
+    <header class="nav_principal" id="nav_principal">
+        <nav class="barra_de_nav">
+            <a href="#"><img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta"></a>
+            <div class="menu_toggle" id="menu_toggle">
+                <input type="checkbox" id="menu36">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navListContent">
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#artigos">Artigos</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#foot">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- <header class="navcel">
+        <img src="assets/logos/navbar_logo.svg">
+        <img id="sanduiche" src="assets/logos/menu_sanduiche.svg">
+    </header> -->
 
+    <script>
+        const menuButton = document.getElementById('menu_toggle');
+        const menu = document.querySelector('navListContent');
+        menuButton.addEventListener("click", function(){
+            menuButton.classList.toggle('active');
+            menu.classList.toggle('active');
+        });
+
+
+        // let sanduiche = document.getElementById('sanduiche'); //botão do sanduiche
+        // const nav = document.querySelector('navListContent'); //lista 
+        // var aux = false; //0 se desativado, 1 se ativado
+
+        // /* se desativada, a lista fica visivel e aux sinaliza 1 e retorna
+        //     se ativada, aux sinaliza 0 e a nav fica invisivel */
+        // sanduiche.addEventListener("click", function(){
+        //     if (aux == false){ 
+        //         nav.style.display = "none";
+        //         aux = true;
+        //         return;
+        //     }
+        //     aux = false;
+        //     nav.style.display = "none";
+        // });
+
+        // nav.addEventListener("click", function(){
+        //     nav.style.display = "none";
+        // })
     </script>
+
+
+    <main>
+        <!--sobre----------------------------------------------------------->
+        <section id="sobre"> 
+            <div class="container">
+                <div class="text_box"> <!--caixa de texto que segura a parte esquerda dos elementos-->
+                    <!-- os h1 e hr compoem o header principal -->
+                    <h1>Sobre Nós</h1> 
+                    <hr class="h1_divider">
+                    <p>O Laboratório de Metaverso - LabMeta, vinculado à Universidade Federal do Paraná (UFPR), destaca-se ao oferecer assessoria em modelagem tridimensional e computacional, especializando-se em prototipagem virtual para diversos ambientes. Utilizando tecnologias como Realidade Virtual, Aumentada, Mista e escaneamento buscamos proporcionar experiências imersivas e interativas através da união entre pesquisa e desenvolvimento prático.</p>
+                    <!-- um div para o 1000+... e 10+... reutilizando o class container -->
+                    por ser um elemento 
+                    <div class="container" style="gap: 4vw;">
+                        <div style="flex: 1; margin-top: 50px;">
+                            <p id="sobrenos_1000plus">1000+</p>
+                            <p style="font-size: 22px; color: #4BDBAB;">pessoas impactadas com nossas demonstrações</p>
+                        </div>
+                        <div style="flex: 1;">
+                            <p id="sobrenos_10plus">10+</p>
+                            <p style="font-size: 22px; color: #00A7E1;">artigos publicados</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <video muted autoplay loop>
+                        <source src="assets/video.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+        <!--projetos-------------------------------------------------------->
+        <section id="projetos">
+            <h1>Projetos</h1> 
+            <hr class="h1_divider">
+            <div class="carouselview">
+                <button id="carousel-prev-button" class="carousel-prev-button"></button>
+                <div id="scrolling-wrapper" class="scrolling-wrapper">
+
+                </div>
+                <button id="carousel-next-button" class="carousel-next-button"></button>
+            </div>
+        </section>
+        <script>
+        //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
+        const scrollingWrapper = document.querySelector(".scrolling-wrapper");
+        $(document).ready(function(){
+            var conteudoDoArquivo;
+
+            $.get('assets/projects/qnt.txt', function(data, status) {
+                    conteudoDoArquivo = parseInt(data);
+
+                    for (var i = 1; i <= conteudoDoArquivo; i++) {
+                        // create a new card element
+                        const card = document.createElement("div");
+                        card.classList.add("card", "card" + i);
+
+                        // create image-container div
+                        const imageContainer = document.createElement("div");
+                        imageContainer.classList.add("imagecontainer", "projeto" + i);
+                        imageContainer.style.backgroundImage = "url(assets/projects/projeto" + i + "/img1.jpg)";
+
+                        // create gradient overlay for the image
+                        const gradientOverlay = document.createElement("div");
+                        gradientOverlay.classList.add("imagecontainer-overlay");
+
+                        // create button
+                        const infoButton = document.createElement("button");
+                        infoButton.classList.add("info-button");
+                        infoButton.textContent = "Mais Informações";
+
+                        // create a header text with class
+                        const headerText = document.createElement("h2");
+                        headerText.classList.add("card-header");
+
+                        // carrega o título do projeto
+                        $.get('assets/projects/projeto' + i + '/titulo.txt', function(data, status) {
+                            const titulo = data;
+                            headerText.textContent = titulo;
+                        });
+
+                        // append the header text to the image container
+                        gradientOverlay.appendChild(headerText);
+
+                        // append overlay to the image container
+                        imageContainer.appendChild(gradientOverlay);
+
+                        // append the image container to the card
+                        card.appendChild(imageContainer);
+
+                        // set the content of the card to the text file content
+                        const contentText = document.createElement("p");
+                        contentText.classList.add("card-content");
+
+                        // carrega a descrição do projeto
+                        $.get('assets/projects/projeto' + i + '/descricao.txt', function(data, status) {
+                            const descricao = data;
+                            contentText.textContent = descricao;
+                        });
+
+                        // append the content text to the card
+                        card.appendChild(contentText);
+
+                        // append the card to the scrolling wrapper
+                        scrollingWrapper.appendChild(card);
+
+                        // append more info button to the card
+                        card.appendChild(infoButton);
+                    }
+
+                        /* muda as imagens quando essas são clicadas */
+                        var aux = 2; //começa na primeira imagem entao deve ir para a 2
+                        const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
+
+                        imagecontainers.forEach(imageContainer => {
+                            imageContainer.addEventListener('click', function() {
+                                if (aux == 4) {
+                                aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
+                            }
+                            aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
+                            this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
+                            });
+                        });
+
+                    /* função para botões funcionarem */
+
+                    const prevButton = document.getElementById("carousel-prev-button");
+                    const nextButton = document.getElementById("carousel-next-button");
+
+                    const card = document.querySelector(".card");
+                    const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+
+                    prevButton.addEventListener("click", function() {
+                        scrollingWrapper.scrollBy({
+                            left: -(cardWidth),
+                            behavior: "smooth"
+                        });
+                    });
+
+                    nextButton.addEventListener("click", function() {
+                        scrollingWrapper.scrollBy({
+                            left: cardWidth,
+                            behavior: "smooth"
+                        });
+                    });
+            });
+        });
+
+        </script>
+
+        <!--eventos-------------------------------------------------------->
+        <section id="eventos">
+            <h1>Eventos</h1> 
+            <hr class="h1_divider2">
+            <div class="carouselview2">
+                <button id="carousel-prev-button2" class="carousel-prev-button2"></button>
+                <div id="scrolling-wrapper2" class="scrolling-wrapper2">
+
+                </div>
+                <button id="carousel-next-button2" class="carousel-next-button2"></button>
+            </div>
+        </section>
+        <script>
+        //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
+        const scrollingWrapper2 = document.querySelector(".scrolling-wrapper2");
+        $(document).ready(function(){
+            var conteudoDoArquivo2;
+
+            $.get('assets/events/qnt.txt', function(data, status) {
+                    conteudoDoArquivo2 = parseInt(data);
+
+                    for (var i = 1; i <= conteudoDoArquivo2; i++) {
+                        // create a new card element
+                        const card2 = document.createElement("div");
+                        card2.classList.add("card2", "card2" + i);
+
+                        // create image-container div
+                        const imageContainer2 = document.createElement("div");
+                        imageContainer2.classList.add("imagecontainer2", "event" + i);
+                        imageContainer2.style.backgroundImage = "url(assets/events/event" + i + "/img1.jpg)";
+
+                        // create gradient overlay for the image
+                        const gradientOverlay2 = document.createElement("div");
+                        gradientOverlay2.classList.add("imagecontainer-overlay2");
+
+                        // create button
+                        const infoButton2 = document.createElement("button");
+                        infoButton2.classList.add("info-button2");
+                        infoButton2.textContent = "Mais Informações";
+
+                        // create a header text with class
+                        const headerText2 = document.createElement("h2");
+                        headerText2.classList.add("card-header2");
+
+                        // carrega o título do projeto
+                        $.get('assets/events/event' + i + '/titulo.txt', function(data, status) {
+                            const titulo2 = data;
+                            headerText2.textContent = titulo2;
+                        });
+
+                        // append the header text to the image container
+                        gradientOverlay2.appendChild(headerText2);
+
+                        // append overlay to the image container
+                        imageContainer2.appendChild(gradientOverlay2);
+
+                        // append the image container to the card
+                        card2.appendChild(imageContainer2);
+
+                        // set the content of the card to the text file content
+                        const contentText2 = document.createElement("p");
+                        contentText2.classList.add("card-content2");
+
+                        // carrega a descrição do projeto
+                        $.get('assets/events/event' + i + '/descricao.txt', function(data, status) {
+                            const descricao2 = data;
+                            contentText2.textContent = descricao2;
+                        });
+
+                        // append the content text to the card
+                        card2.appendChild(contentText2);
+
+                        // append the card to the scrolling wrapper
+                        scrollingWrapper2.appendChild(card2);
+
+                        // append more info button to the card
+                        card2.appendChild(infoButton2);
+                    }
+
+                        /* muda as imagens quando essas são clicadas */
+                        var aux = 2; //começa na primeira imagem entao deve ir para a 2
+                        const imagecontainers2 = document.querySelectorAll('.imagecontainer2'); //div com fundo img
+
+                        imagecontainers2.forEach(imageContainer2 => {
+                            imageContainer2.addEventListener('click', function() {
+                                if (aux == 4) {
+                                aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
+                            }
+                            aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
+                            this.style.backgroundImage = "url(assets/events/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
+                            });
+                        });
+
+                    /* função para botões funcionarem */
+
+                    const prevButton = document.getElementById("carousel-prev-button2");
+                    const nextButton = document.getElementById("carousel-next-button2");
+
+                    const card = document.querySelector(".card");
+                    const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+
+                    prevButton.addEventListener("click", function() {
+                        scrollingWrapper2.scrollBy({
+                            left: -(cardWidth),
+                            behavior: "smooth"
+                        });
+                    });
+
+                    nextButton.addEventListener("click", function() {
+                        scrollingWrapper2.scrollBy({
+                            left: cardWidth,
+                            behavior: "smooth"
+                        });
+                    });
+            });
+        });
+
+        </script>
+
+        <!--artigos--------------------------------------------------------->
+        <section id="artigos">
+            <h1>Publicações</h1>
+            <hr class="h1_divider">
+            <p id="artigos_importados">artigos vão aqui</p>
+        </section>
+        <script> // Style every second line
+            $(document).ready(function(){
+                $('#artigos_importados').load('assets/lista_artigos.txt', function(response, status, xhr) {
+                    if (status == "error") {
+                        console.error("Error loading the file: " + xhr.status + " " + xhr.statusText);
+                    } else {
+                        console.log('File loaded successfully');
+
+                        var content = $(this).text(); // Get the text content of the loaded file
+                        var lines = content.split('\n'); // Split the content into lines based on newline
+                        var styledContent = ''; // Variable to store styled content
+                        for (var i = 0; i < lines.length; i++) {
+                            // Check if the line number is a multiple of 4 or 3
+                            if ((i + 1) % 2 === 0) {
+                            styledContent += '<span class="second">' + lines[i] + '</span><br>'; // Style every second line
+                            } else if ((i + 1) % 3 === 0) {
+                            styledContent += '<span class="third">' + lines[i] + '</span><br>'; // Style every third line
+                            } else {
+                            styledContent += '<span class="article_title">' + lines[i] + '</span><br>'; // Default styling for other lines
+                            }
+                        }
+                        $('#artigos_importados').html(styledContent); // Replace the content of the element with the styled content
+                }
+            });
+        });
+        </script>
+        </section>
+
+        <!--equipe---------------------------------------------------------->
+        <section class="equipe" id="equipe">
+            <h1>Equipe</h1>
+            <hr class="h1_divider">
+
+            <div class="all_members">
+                <div id="estudantes">
+                    <div class="estudantescard"><h2>Estudantes</h2></div>
+                    <div class="profile_container">
+                        <!-- 06 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p06.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Mariana Prokopowski</text></div>
+                                <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <a href="https://www.linkedin.com/in/mariana-prokopowiski-/"> <text class="ln">@mariana-prokopowiski-</text></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 07 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p07.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Mariana Almeida</text></div>
+                                <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <text class="ln">@Person.Name</text>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 08 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p08.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Sofia Simões</text></div>
+                                <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <a href="https://www.linkedin.com/in/eusofiasimoes/"> <text class="ln">@eusofiasimoes</text> </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 09 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p09.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Victoria Mariane</text></div>
+                                <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <text class="ln">@Person.Name</text>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 10 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p10.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Nickolas Quintino</text></div>
+                                <div class="profile_function"><text class="function">Pesquisador IC</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <text class="ln">@Person.Name</text>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 11 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p11.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Jun Zeredo</text></div>
+                                <div class="profile_function"><text class="function">Voluntário</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <a href="https://www.linkedin.com/in/junszeredo/"> <text class="ln">@junszeredo</text> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="professores">
+                    <div class="professorescard"><h2>Professores</h2></div>
+                    <div class="profile_container">
+                        <!-- 03 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p03.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Prof. Dr. Márcio Catapan</text></div>
+                                <div class="profile_function"><text class="function">Coordenador</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <text class="ln">@marciocatapan</text>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 02 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p02.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Prof. Dra. Isabella Sierra</text></div>
+                                <div class="profile_function"><text class="function">Prof. Aux. de Pesquisa</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <text class="ln">@Person.Name</text>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 01 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p01.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Prof. Dr. Márcio Carboni</text></div>
+                                <div class="profile_function"><text class="function">Vice Coordenador</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <a href="https://www.linkedin.com/in/marciocarboni/"><text class="ln">@marciocarboni</text></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 04 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p04.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Msc. Fuad Pumarejo</text></div>
+                                <div class="profile_function"><text class="function">Doutorando</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <text class="ln">@Person.Name</text>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 05 ------------------------------------------------------------->
+                        <div class="grid_item">
+                            <div class="profile_image"><img src="assets/profiles/p05.png"></div>
+                            <div class="textg">
+                                <div class="profile_name"><text class="profile_name">Msc. Lucas Gregory</text></div>
+                                <div class="profile_function"><text class="function">Doutorando</text></div>
+                                <div class="ln">
+                                    <img src="assets/logos/Linkedin.svg">
+                                    <text class="ln">@Person.Name</text>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!------ CENA 3D --------------------------------------------------->
+        <script type="module">
+            import * as THREE from './js/three.module.js';
+            import { APP } from './js/app.js';
+
+            // Verifica se o dispositivo é um celular
+            function isMobileDevice() {
+                return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+            }
+
+            // Se não for um celular, executa o código
+                window.THREE = THREE; // Used by APP Scripts.
+
+                var loader = new THREE.FileLoader();
+                loader.load( 'app.json', function ( text ) {
+
+                    var player = new APP.Player();
+                    player.load( JSON.parse( text ) );
+                    player.setSize( window.innerWidth, window.innerHeight );
+                    player.play();
+
+                    var containerDiv = document.getElementById('test'); 
+                    containerDiv.appendChild( player.dom );
+
+                    window.addEventListener( 'resize', function () {
+                        player.setSize( window.innerWidth, window.innerHeight );
+                    });
+
+                });
+        </script>
+    </main>
+
+
     <!------ FOOTER ---------------------------------------------------->
     <footer id="foot">
         <div class="fup">
@@ -575,5 +595,7 @@
             </div>
         </div>
     </footer>
+
+
 </body>
 </html>
