@@ -177,22 +177,27 @@ h1{
 
 .text_box {
     overflow-wrap: break-word;
-    inline-size: 50%;
     flex: 1.618;
     padding-right: 4vw;
     padding-bottom: 50px;
+    min-width: 250px;
+}
+
+#veryrealstats{
+    gap: 4vw;
+    flex-direction: row;
 }
 
 .video {
     flex: 1.618;
-    border-radius: var(--edge-roundness);
 }
 
 .video video {
     border-radius: var(--edge-roundness);
-    min-width: 250px;
+    min-width: 300px;
     max-width: 100%;
 }
+
 #sobrenos_1000plus{
     font-size: 48px;
     font-weight: 700;
@@ -241,10 +246,7 @@ h1{
     background-image: url(assets/fundo/fundopreto.png);
     transition: background-image 1s ease;
 }
-.card:hover, .card2:hover{
-    background-image: url(assets/fundo/fundoroxo.png);
-    
-}
+
 .imagecontainer, .imagecontainer2{
     aspect-ratio: 1/1;
     background-image: url(/Labmeta-testgrounds/assets/projects/img1.jpg);
@@ -552,13 +554,50 @@ footer {
     align-items: center;
 }
 
+@media (min-width: 895px) {
+    .card:hover, .card2:hover{
+        background-image: url(assets/fundo/fundoroxo.png);
+    }
+}
+
+@media (max-width: 500px) {
+    /* main section for mobile */
+    .text_box{
+        margin-top: 100vw;
+        padding: 4vw;
+    }
+    .video {
+        top: 0px;
+        position: absolute;
+        /* width: 100vw; */
+        border-radius: 0;
+        margin-bottom: 8vh;
+        top: 80px;
+        transform: scale(1.5);
+        transform-origin: top;
+;
+    }
+
+    .video video{
+        border-radius: 0;
+    }
     
-@media (max-width: 895px) {
+    #test{
+        display: none;
+    }
+
+    #sobre{
+        padding: 0%;
+    }
+
+}
+
+@media (max-width: 895px) {    
     body{
         overflow-x: hidden;
     }
-    /* header para celular */
 
+    /* hide carousel buttons */
     .fup img {
         margin-bottom: 2%;
         width: 40vw;
@@ -574,8 +613,6 @@ footer {
     .nav_landing_page ul{
         flex-direction: column;
         margin-top: 25vh;
-        background: #000000d2;
-        border-radius: var(--edge-roundness);
     }
     .nav_landing_page{
         justify-content: center;
@@ -661,6 +698,14 @@ footer {
 
     nav .menu_toggle.active+.navListContent{
         display: flex;
+    }
+
+    section{
+        padding: 4vw;
+    }
+
+    .nav_principal{
+        animation: none;
     }
 
 }
