@@ -194,7 +194,7 @@ h1{
 
 .video video {
     border-radius: var(--edge-roundness);
-    min-width: 300px;
+    min-width: 250px;
     max-width: 100%;
 }
 
@@ -558,28 +558,44 @@ footer {
     .card:hover, .card2:hover{
         background-image: url(assets/fundo/fundoroxo.png);
     }
+
+    .video img{
+        display: none;
+    }
+
+    .video .video{
+        display: none;
+    }
+
 }
 
 @media (max-width: 500px) {
     /* main section for mobile */
     .text_box{
-        margin-top: 100vw;
+        margin-top: 500px;
         padding: 4vw;
     }
     .video {
-        top: 0px;
+        display: flex;
+        justify-content: center;
         position: absolute;
-        /* width: 100vw; */
+        border-radius: 0;
+        margin-bottom: 8vh;
+        top: 80px;
+        width: 100vw;
+        overflow: hidden;
+        /* top: 0px;
+        position: absolute;
         border-radius: 0;
         margin-bottom: 8vh;
         top: 80px;
         transform: scale(1.5);
-        transform-origin: top;
-;
+        transform-origin: top; */
     }
 
     .video video{
         border-radius: 0;
+        display: none;
     }
     
     #test{
@@ -607,6 +623,9 @@ footer {
     }
     .carousel-next-button2, .carousel-prev-button2{
         display: none;
+    }
+    .profile_container{
+        justify-content: center;
     }
 
     /* navbar */
