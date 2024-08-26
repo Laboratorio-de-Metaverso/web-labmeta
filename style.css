@@ -352,7 +352,13 @@ h1{
     display: flex;
     align-items: center;
     font-size: 24px;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
+.article_title:hover{
+    color: purple;
+}
+
 .second{
     color: var(--lm_blue);
     line-height: 6vh;

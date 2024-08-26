@@ -356,8 +356,9 @@
                             styledContent += '<span class="second">' + lines[i] + '</span><br>'; // Style every second line
                             } else if ((i + 1) % 3 === 0) {
                             styledContent += '<span class="third">' + lines[i] + '</span><br>'; // Style every third line
-                            } else {
-                            styledContent += '<span class="article_title">' + lines[i] + '</span><br>'; // Default styling for other lines
+                            } else if (i % 3 == 0){
+                            var link = lines[i + 4];
+                            styledContent += `<a class="article_title" href="${link}">${lines[i]}</a><br>`; // Default styling for other lines
                             }
                         }
                         $('#artigos_importados').html(styledContent); // Replace the content of the element with the styled content
