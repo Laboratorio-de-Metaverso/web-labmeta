@@ -1,6 +1,9 @@
 var APP = {
 
 	Player: function () {
+		if (isMobileDevice()){
+			return;
+		}
 
 		var renderer = new THREE.WebGLRenderer( { antialias: true } );
 		renderer.setPixelRatio( window.devicePixelRatio ); // TODO: Use player.setPixelRatio()
@@ -263,7 +266,7 @@ var APP = {
 			var mouseY = (event.clientY - (window.innerHeight / 2)) / (window.innerHeight / 10);
 
 			var x = mouseX;
-			var y = 0.499; 
+			var y = 0.899; 
 			var z = mouseY;
 
 			// Calcular a nova posição usando interpolação
