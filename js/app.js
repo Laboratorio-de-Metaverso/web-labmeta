@@ -1,7 +1,30 @@
+function isHardwareAccelerationEnabled() {
+    try {
+        var canvas = document.createElement('canvas');
+        var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+
+        if (gl && gl instanceof WebGLRenderingContext) {
+            var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            if (debugInfo) {
+                var renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                return !renderer.toLowerCase().includes('software'); // Se não contém "software", está com aceleração
+            }
+            return 1; // Se não conseguir acessar o debugInfo, assume-se que a aceleração está ativada
+        }
+    } catch (e) {
+        return 0; // WebGL não suportado, provavelmente sem aceleração
+    }
+    return 0; // WebGL não disponível
+}
+
+
+var aux_Gl;
+aux_Gl = isHardwareAccelerationEnabled;
+
 var APP = {
 
 	Player: function () {
-		if (isMobileDevice()){
+		if (isMobileDevice() || aux_Gl == 0){
 			return;
 		}
 
