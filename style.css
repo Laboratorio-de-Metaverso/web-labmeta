@@ -566,7 +566,7 @@ footer {
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 895px) {
     /* main section for mobile */
     .text_box{
         margin-top: 100vw;
@@ -578,8 +578,9 @@ footer {
         /* width: 100vw; */
         border-radius: 0;
         margin-bottom: 8vh;
-        top: 80px;
-        transform: scale(1.5);
+        top: 0px;
+        width: 100%;
+        transform: scale(1);
         transform-origin: top;
 ;
     }
