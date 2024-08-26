@@ -560,6 +560,10 @@ footer {
     align-items: center;
 }
 
+.firstMobile{
+    display: none;
+}
+
 @media (min-width: 895px) {
     .card:hover, .card2:hover{
         background-image: url(assets/fundo/fundoroxo.png);
@@ -567,26 +571,28 @@ footer {
 }
 
 @media (max-width: 895px) {
+    .sobreAux{
+        display: flex;
+        flex-direction: column;
+    }
+
     /* main section for mobile */
     .text_box{
         margin-top: 100vw;
         padding: 4vw;
     }
     .video {
-        top: 0px;
-        position: absolute;
         /* width: 100vw; */
         border-radius: 0;
-        margin-bottom: 8vh;
-        top: 0px;
         width: 100%;
         transform: scale(1);
         transform-origin: top;
-;
+
     }
 
     .video video{
         border-radius: 0;
+        max-width: 100%;
     }
     
     #test{
@@ -603,6 +609,20 @@ footer {
     body{
         overflow-x: hidden;
     }
+
+    .firstMobile{
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: -100%;
+        height: 100vh;
+        background-color:  #3C1768;
+        background-image: url(/assets/logos/logo_aux.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 80%;
+    }
+    
 
     /* hide carousel buttons */
     .fup img {
