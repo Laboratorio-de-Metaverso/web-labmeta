@@ -240,7 +240,7 @@ h1{
     max-width: 350px;
     min-width: 200px;
     padding: 50px 25px;
-    margin-right: 1.5vw;
+    margin-right: 25px;
     border-radius: var(--edge-roundness);
     background-size: cover;
     background-image: url(assets/fundo/fundopreto.png);
@@ -620,14 +620,52 @@ footer {
         box-sizing: border-box;
         width: 100%;
         margin-bottom: -100%;
-        height: 100vh;
-        background-color:  #3C1768;
-        background-image: url(assets/logos/logo_aux.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 80%;
+        height: 50vh;
+        background: linear-gradient(55deg, #180231, #230036, #4a1168, #8847d2);
+        background-size: 800% 800%;
+        -webkit-animation: LabMetaGradient 23s ease infinite;
+        -moz-animation: LabMetaGradient 23s ease infinite;
+        -o-animation: LabMetaGradient 23s ease infinite;
+        justify-content: center;
+        padding: 40px;
+        overflow: hidden;
+        /* background-image: url(assets/logos/logo_aux.png); */
+        /* background-repeat: no-repeat; */
+        /* background-position: center; */
+        /* background-size: 80%; */
     }
-    
+
+    /* hero animations */
+    #dashedHeroContour{
+        animation: dash 60s linear;
+    }
+
+    @keyframes dash {
+        to {
+          stroke-dashoffset: 1000;
+        }
+    }
+
+    @-webkit-keyframes LabMetaGradient {
+        0%{background-position:97% 0%}
+        50%{background-position:4% 100%}
+        100%{background-position:97% 0%}
+    }
+    @-moz-keyframes LabMetaGradient {
+        0%{background-position:97% 0%}
+        50%{background-position:4% 100%}
+        100%{background-position:97% 0%}
+    }
+    @-o-keyframes LabMetaGradient {
+        0%{background-position:97% 0%}
+        50%{background-position:4% 100%}
+        100%{background-position:97% 0%}
+    }
+    @keyframes LabMetaGradient {
+        0%{background-position:97% 0%}
+        50%{background-position:4% 100%}
+        100%{background-position:97% 0%}
+    }
 
     /* hide carousel buttons */
     .fup img {
