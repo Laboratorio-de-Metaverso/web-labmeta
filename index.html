@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="index.js"></script>
     <title>LabMeta</title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/logos/favicon.png">
 </head>
@@ -304,10 +303,10 @@
                         imagecontainers2.forEach(imageContainer2 => {
                             imageContainer2.addEventListener('click', function() {
                                 if (aux == 4) {
-                                aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
-                            }
-                            aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
-                            this.style.backgroundImage = "url(assets/events/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
+                                    aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
+                                }
+                                aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
+                                this.style.backgroundImage = "url(assets/events/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
                             });
                         });
 
@@ -349,8 +348,6 @@
                     if (status == "error") {
                         console.error("Error loading the file: " + xhr.status + " " + xhr.statusText);
                     } else {
-                        console.log('File loaded successfully');
-
                         var content = $(this).text(); // Get the text content of the loaded file
                         var lines = content.split('\n'); // Split the content into lines based on newline
                         var styledContent = ''; // Variable to store styled content
@@ -562,10 +559,10 @@
         <div class="fup">
             <img src="assets/logos/navbar_logo.svg">
             <a href="">Página Inicial</a>
-            <a href="">Sobre Nós</a>
-            <a href="">Projetos</a>
-            <a href="">Artigos</a>
-            <a href="">Equipe</a>
+            <a href="#sobre">Sobre Nós</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#artigos">Artigos</a>
+            <a href="#equipe">Equipe</a>
             <a href="">Contato</a>
             <a href="">UFPR</a>
         </div>
