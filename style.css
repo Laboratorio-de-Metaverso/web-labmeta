@@ -587,7 +587,6 @@ footer {
         padding: 4vw;
     }
     .video {
-        /* width: 100vw; */
         border-radius: 0;
         width: 100%;
         transform: scale(1);
@@ -596,8 +595,7 @@ footer {
     }
 
     .video video{
-        border-radius: 0;
-        max-width: 100%;
+        display: none;
     }
     
     #test{
@@ -620,51 +618,24 @@ footer {
         box-sizing: border-box;
         width: 100%;
         margin-bottom: -100%;
-        height: 50vh;
-        background: linear-gradient(55deg, #180231, #230036, #4a1168, #8847d2);
-        background-size: 800% 800%;
-        -webkit-animation: LabMetaGradient 23s ease infinite;
-        -moz-animation: LabMetaGradient 23s ease infinite;
-        -o-animation: LabMetaGradient 23s ease infinite;
+        height: 35vh;
+        /* background-size: 800% 800%; */
         justify-content: center;
-        padding: 40px;
+        /* padding: 40px; */
         overflow: hidden;
+        border-radius: var(--edge-roundness);
         /* background-image: url(assets/logos/logo_aux.png); */
         /* background-repeat: no-repeat; */
         /* background-position: center; */
         /* background-size: 80%; */
+        
     }
 
-    /* hero animations */
-    #dashedHeroContour{
-        animation: dash 60s linear;
-    }
 
-    @keyframes dash {
-        to {
-          stroke-dashoffset: 1000;
-        }
-    }
-
-    @-webkit-keyframes LabMetaGradient {
-        0%{background-position:97% 0%}
-        50%{background-position:4% 100%}
-        100%{background-position:97% 0%}
-    }
-    @-moz-keyframes LabMetaGradient {
-        0%{background-position:97% 0%}
-        50%{background-position:4% 100%}
-        100%{background-position:97% 0%}
-    }
-    @-o-keyframes LabMetaGradient {
-        0%{background-position:97% 0%}
-        50%{background-position:4% 100%}
-        100%{background-position:97% 0%}
-    }
-    @keyframes LabMetaGradient {
-        0%{background-position:97% 0%}
-        50%{background-position:4% 100%}
-        100%{background-position:97% 0%}
+    .firstMobile video{
+        border-radius: var(--edge-roundness);
+        width: 100%;
+        transform: scale(1);
     }
 
     /* hide carousel buttons */
