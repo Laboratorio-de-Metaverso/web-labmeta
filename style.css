@@ -194,7 +194,7 @@ h1{
 
 .video video {
     border-radius: var(--edge-roundness);
-    min-width: 250px;
+    min-width: 300px;
     max-width: 100%;
 }
 
@@ -253,10 +253,12 @@ h1{
     background-size: cover;
     background-position: 50%;
     border-radius: var(--edge-roundness);
-    transition: background-image 0.5s ease-in;
+    transition: background-image 0.5s ease;
     overflow: hidden;
     margin-bottom: 8%;
+    cursor: pointer;
 }
+
 .imagecontainer-overlay, .imagecontainer-overlay2{
     display: flex;
     box-sizing: border-box;
@@ -268,6 +270,7 @@ h1{
     height: 100%;
     background: linear-gradient(180deg, #00000000 0%,#11111163 80%, #111111 100%);    ;
     border-radius: inherit;
+    
 }
 .card-header, .card-header2{
     overflow-wrap: break-word;
@@ -317,6 +320,8 @@ h1{
     border: none;
     padding: 5%;
     border-radius: inherit;
+    cursor: pointer;
+
 }
 .carousel-next-button, .carousel-prev-button, .carousel-next-button2, .carousel-prev-button2{
     border-radius: var(--edge-roundness);
@@ -352,7 +357,13 @@ h1{
     display: flex;
     align-items: center;
     font-size: 24px;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
+.article_title:hover{
+    color: purple;
+}
+
 .second{
     color: var(--lm_blue);
     line-height: 6vh;
@@ -554,48 +565,39 @@ footer {
     align-items: center;
 }
 
+.firstMobile{
+    display: none;
+}
+
 @media (min-width: 895px) {
     .card:hover, .card2:hover{
         background-image: url(assets/fundo/fundoroxo.png);
     }
-
-    .video img{
-        display: none;
-    }
-
-    .video .video{
-        display: none;
-    }
-
 }
 
-@media (max-width: 500px) {
+@media (max-width: 895px) {
+    .sobreAux{
+        display: flex;
+        flex-direction: column;
+    }
+
     /* main section for mobile */
     .text_box{
-        margin-top: 500px;
+        margin-top: 100vw;
         padding: 4vw;
     }
     .video {
-        display: flex;
-        justify-content: center;
-        position: absolute;
+        /* width: 100vw; */
         border-radius: 0;
-        margin-bottom: 8vh;
-        top: 80px;
-        width: 100vw;
-        overflow: hidden;
-        /* top: 0px;
-        position: absolute;
-        border-radius: 0;
-        margin-bottom: 8vh;
-        top: 80px;
-        transform: scale(1.5);
-        transform-origin: top; */
+        width: 100%;
+        transform: scale(1);
+        transform-origin: top;
+
     }
 
     .video video{
         border-radius: 0;
-        display: none;
+        max-width: 100%;
     }
     
     #test{
@@ -613,6 +615,20 @@ footer {
         overflow-x: hidden;
     }
 
+    .firstMobile{
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: -100%;
+        height: 100vh;
+        background-color:  #3C1768;
+        background-image: url(assets/logos/logo_aux.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 80%;
+    }
+    
+
     /* hide carousel buttons */
     .fup img {
         margin-bottom: 2%;
@@ -623,9 +639,6 @@ footer {
     }
     .carousel-next-button2, .carousel-prev-button2{
         display: none;
-    }
-    .profile_container{
-        justify-content: center;
     }
 
     /* navbar */

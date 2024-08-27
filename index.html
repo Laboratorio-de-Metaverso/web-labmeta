@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="index.js"></script>
     <title>LabMeta</title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/logos/favicon.png">
 </head>
@@ -67,9 +66,13 @@
 
 
     <main>
+        <section class="firstMobile">
+            
+        </section>
+
         <!--sobre----------------------------------------------------------->
         <section id="sobre"> 
-            <div class="container">
+            <div class="container sobreAux">
                 <div class="text_box"> <!--caixa de texto que segura a parte esquerda dos elementos-->
                     <!-- os h1 e hr compoem o header principal -->
                     <h1>Sobre Nós</h1> 
@@ -301,10 +304,10 @@
                         imagecontainers2.forEach(imageContainer2 => {
                             imageContainer2.addEventListener('click', function() {
                                 if (aux == 4) {
-                                aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
-                            }
-                            aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
-                            this.style.backgroundImage = "url(assets/events/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
+                                    aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
+                                }
+                                aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
+                                this.style.backgroundImage = "url(assets/events/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
                             });
                         });
 
@@ -346,8 +349,6 @@
                     if (status == "error") {
                         console.error("Error loading the file: " + xhr.status + " " + xhr.statusText);
                     } else {
-                        console.log('File loaded successfully');
-
                         var content = $(this).text(); // Get the text content of the loaded file
                         var lines = content.split('\n'); // Split the content into lines based on newline
                         var styledContent = ''; // Variable to store styled content
@@ -357,8 +358,9 @@
                             styledContent += '<span class="second">' + lines[i] + '</span><br>'; // Style every second line
                             } else if ((i + 1) % 3 === 0) {
                             styledContent += '<span class="third">' + lines[i] + '</span><br>'; // Style every third line
-                            } else {
-                            styledContent += '<span class="article_title">' + lines[i] + '</span><br>'; // Default styling for other lines
+                            } else if (i % 3 == 0){
+                            var link = lines[i + 4];
+                            styledContent += `<a class="article_title" href="${link}">${lines[i]}</a><br>`; // Default styling for other lines
                             }
                         }
                         $('#artigos_importados').html(styledContent); // Replace the content of the element with the styled content
@@ -558,10 +560,10 @@
         <div class="fup">
             <img src="assets/logos/navbar_logo.svg">
             <a href="">Página Inicial</a>
-            <a href="">Sobre Nós</a>
-            <a href="">Projetos</a>
-            <a href="">Artigos</a>
-            <a href="">Equipe</a>
+            <a href="#sobre">Sobre Nós</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#artigos">Artigos</a>
+            <a href="#equipe">Equipe</a>
             <a href="">Contato</a>
             <a href="">UFPR</a>
         </div>
