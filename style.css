@@ -619,16 +619,8 @@ footer {
         width: 100%;
         margin-bottom: -100%;
         height: 35vh;
-        /* background-size: 800% 800%; */
-        justify-content: center;
-        /* padding: 40px; */
+        justify-content: top;
         overflow: hidden;
-        border-radius: var(--edge-roundness);
-        /* background-image: url(assets/logos/logo_aux.png); */
-        /* background-repeat: no-repeat; */
-        /* background-position: center; */
-        /* background-size: 80%; */
-        
     }
 
 
