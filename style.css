@@ -615,19 +615,18 @@ footer {
 
     .firstMobile{
         display: flex;
-        box-sizing: border-box;
-        width: 100%;
-        margin-bottom: -100%;
-        height: 35vh;
-        justify-content: top;
         overflow: hidden;
+        justify-content: center;
+        margin-bottom: -100%;
     }
 
+    .videoBoxClip{
+        height: 35vh;
+    }
 
     .firstMobile video{
-        border-radius: var(--edge-roundness);
+        display: flex;
         width: 100%;
-        transform: scale(1);
     }
 
     /* hide carousel buttons */
