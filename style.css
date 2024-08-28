@@ -19,14 +19,14 @@
     letter-spacing: 0.6px;
     align-items: center;
     align-items: center;
-
-    text-wrap: balance;
-    text-justify: inter-character;
-    line-height: 1.5em;
-    text-justify: auto;
     scroll-behavior: smooth;
     scrollbar-color: var(--lm_white) var(--lm_black);
 }
+/* Responsive Typography */
+p {
+    margin: 0 0 1.2em;
+}
+
 /* -------fundo------- */
 body{
     background: var(--lm_black);
