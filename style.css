@@ -322,6 +322,7 @@ h1{
     background-color: #02040292;
     border: none;
     padding: 5%;
+    text-align: center;
     width: 100%;
     border-radius: inherit;
     cursor: pointer;
