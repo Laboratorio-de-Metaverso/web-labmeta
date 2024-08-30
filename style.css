@@ -108,6 +108,16 @@ h1{
     font-size: 20px;
     opacity: 50%;
 }
+.nav_landing_page ul{
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #f3eff578;
+    border-radius: var(--edge-roundness);
+    
+}
+.nav_landing_page li{
+    padding: 1vh 0.5vw;
+}
 .nav_landing_page a:hover{
     animation-timeline: 100%;
 }
@@ -279,9 +289,9 @@ h1{
     overflow-wrap: break-word;
     text-wrap: balance;
     font-size: 28px;
-    line-height: 1.15em;
+    line-height: 1em;
     font-weight: 700;
-    letter-spacing: -3.2px;
+    letter-spacing: -2px;
 }
 .card-content, .card-content2{
     overflow-wrap: break-word;
@@ -292,6 +302,7 @@ h1{
     hyphens: auto;
     overflow-y: scroll;
     height: 10lh;
+    font-weight: 100;
     &::-webkit-scrollbar {
         display: none;
       }
