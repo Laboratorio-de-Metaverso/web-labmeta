@@ -376,10 +376,12 @@ h1{
     text-decoration: none;
     transition: color 0.2s ease;
 }
-.article_title:hover{
-    color: purple;
+.article_title::after{
+    color: var(--lm_purple);
 }
-
+.article_title:hover{
+    text-decoration: underline;
+}
 .second{
     color: var(--lm_blue);
     line-height: 6vh;
