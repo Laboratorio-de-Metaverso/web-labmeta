@@ -18,8 +18,7 @@ function isHardwareAccelerationEnabled() {
 }
 
 
-var aux_Gl;
-aux_Gl = isHardwareAccelerationEnabled;
+var aux_Gl = isHardwareAccelerationEnabled();
 
 var APP = {
 
@@ -33,8 +32,6 @@ var APP = {
 
 		var loader = new THREE.ObjectLoader();
 		var camera, scene;
-		
-
 		var events = {};
 
 		var dom = document.createElement( 'div' );
@@ -122,9 +119,6 @@ var APP = {
 
 			dispatch( events.init, arguments );
 
-		/*var mouseX = (clientX / window.innerWidth);
-   			var mouseY = - (clientY / window.innerHeight);*/
-
 			var x = 0;
 			var y = 1;
 			var z = -4;
@@ -186,10 +180,23 @@ var APP = {
 		}
 
 		var time, startTime, prevTime;
+		var fpsThreshold = 15; // FPS threshold to disable rendering
+        var fpsCheckInterval = 1000; // Check every 5 seconds
+        var lastCheckTime = 0;
 
 		function animate() {
 
 			time = performance.now();
+
+			if (time - lastCheckTime > fpsCheckInterval) {
+                var fps = 1000 / (time - prevTime);
+                if (fps < fpsThreshold) {
+                    console.warn("Low FPS detected (" + fps + "), stopping rendering.");
+                    this.stop();
+                    return;
+                }
+                lastCheckTime = time;
+            }
 
 			try {
 
