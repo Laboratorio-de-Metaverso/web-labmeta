@@ -120,6 +120,7 @@ h1{
 }
 .nav_landing_page a:hover{
     animation-timeline: 100%;
+    opacity: 100%;
 }
 .nav_principal{
     display: flex;

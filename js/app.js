@@ -24,6 +24,7 @@ var APP = {
 
 	Player: function () {
 		if (isMobileDevice() || aux_Gl == 0){
+			console.log("Rendering disabled due to mobile device or no hardware acceleration.");
 			return;
 		}
 
@@ -181,7 +182,7 @@ var APP = {
 
 		var time, startTime, prevTime;
 		var fpsThreshold = 15; // FPS threshold to disable rendering
-        var fpsCheckInterval = 1000; // Check every 5 seconds
+        var fpsCheckInterval = 3000; // Check every 3 seconds
         var lastCheckTime = 0;
 
 		function animate() {
@@ -199,23 +200,17 @@ var APP = {
             }
 
 			try {
-
 				dispatch( events.update, { time: time - startTime, delta: time - prevTime } );
-
 			} catch ( e ) {
-
 				console.error( ( e.message || e ), ( e.stack || '' ) );
-
 			}
 
 			renderer.render( scene, camera );
-
 			prevTime = time;
 
 		}
 
 		this.play = function () {
-
 			startTime = prevTime = performance.now();
 
 			document.addEventListener( 'keydown', onKeyDown );
@@ -319,7 +314,6 @@ var APP = {
 			return a + (b - a) * t;
 		}
 
-
 		function isMobileDevice() {
 			return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 		}
@@ -331,23 +325,6 @@ var APP = {
 			// console.log("É um dispositivo móvel!");
 		}
 		
-
-		/*document.addEventListener('mouseenter', function(event) {
-			var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-			var mouseY = - (event.clientY / window.innerHeight) * 2 + 1;
-		
-			var vector = new THREE.Vector3(mouseX, mouseY, 0.5);
-			vector.unproject(camera);
-			var dir = vector.sub(camera.position).normalize();
-			var distance = -camera.position.z / dir.z;
-			var pos = camera.position.clone().add(dir.multiplyScalar(distance));
-		
-			var light = scene.getObjectByName('PointLight'); // Substitua 'PointLight' pelo nome da sua luz
-			if (light) {
-				light.position.copy(pos);
-			}
-		});
-*/
 	}
 
 };
