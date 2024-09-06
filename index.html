@@ -27,6 +27,35 @@
                 </ul>
             </nav>
         </div>
+        <script type="module">
+            import * as THREE from './js/three.module.js';
+            import { APP } from './js/app.js';
+            
+            // Verifica se o dispositivo é um celular
+            function isMobileDevice() {
+                return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+            }
+
+            // Se não for um celular, executa o código
+                window.THREE = THREE; // Used by APP Scripts.
+
+                var loader = new THREE.FileLoader();
+                loader.load( 'app.json', function ( text ) {
+
+                    var player = new APP.Player();
+                    player.load( JSON.parse( text ) );
+                    player.setSize( window.innerWidth, window.innerHeight );
+                    player.play();
+
+                    var containerDiv = document.getElementById('test'); 
+                    containerDiv.appendChild( player.dom );
+
+                    window.addEventListener( 'resize', function () {
+                        player.setSize( window.innerWidth, window.innerHeight );
+                    });
+
+                });
+        </script>
     </section>
     
     <!--barra de navegacao---------------------------------------------->
@@ -50,10 +79,6 @@
             </ul>
         </nav>
     </header>
-    <!-- <header class="navcel">
-        <img src="assets/logos/navbar_logo.svg">
-        <img id="sanduiche" src="assets/logos/menu_sanduiche.svg">
-    </header> -->
 
     <script>
         const menuButton = document.getElementById('menu_toggle');
@@ -63,7 +88,6 @@
             menu.classList.toggle('active');
         });
     </script>
-
 
     <main>
         <section class="firstMobile">
@@ -217,7 +241,6 @@
                     });
             });
         });
-
         </script>
 
         <!--eventos-------------------------------------------------------->
@@ -524,35 +547,7 @@
         </section>
 
         <!------ CENA 3D --------------------------------------------------->
-        <script type="module">
-            import * as THREE from './js/three.module.js';
-            import { APP } from './js/app.js';
-            
-            // Verifica se o dispositivo é um celular
-            function isMobileDevice() {
-                return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-            }
 
-            // Se não for um celular, executa o código
-                window.THREE = THREE; // Used by APP Scripts.
-
-                var loader = new THREE.FileLoader();
-                loader.load( 'app.json', function ( text ) {
-
-                    var player = new APP.Player();
-                    player.load( JSON.parse( text ) );
-                    player.setSize( window.innerWidth, window.innerHeight );
-                    player.play();
-
-                    var containerDiv = document.getElementById('test'); 
-                    containerDiv.appendChild( player.dom );
-
-                    window.addEventListener( 'resize', function () {
-                        player.setSize( window.innerWidth, window.innerHeight );
-                    });
-
-                });
-        </script>
     </main>
 
 
