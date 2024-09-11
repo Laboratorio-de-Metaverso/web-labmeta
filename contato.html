@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="por">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Contato</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/logos/favicon.png">
+</head>
+<body>
+    <!--barra de navegacao---------------------------------------------->
+    <header class="nav_principal" id="nav_principal" style="animation: none;">
+        <nav class="barra_de_nav">
+            <a href="index.html"><img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta"></a>
+            <div class="menu_toggle" id="menu_toggle">
+                <input type="checkbox" id="menu36">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navListContent">
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#artigos">Publicações</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+        const menuButton = document.getElementById('menu_toggle');
+        const menu = document.querySelector('navListContent');
+        menuButton.addEventListener("click", function(){
+            menuButton.classList.toggle('active');
+            menu.classList.toggle('active');
+        });
+    </script>
+
+
+
+    <section class="contato">
+        <div class="contact-logo">
+            <a href="index.html"><img src="assets/logos/headset.svg"></a>
+        </div>
+        <div class="contact-list-box">
+            <ul>
+                <li><a href="#">link contato 1</a></li>
+                <li><a href="#">link contato 2</a></li>
+                <li><a href="#">link contato 3</a></li>
+                <li><a href="#">link contato 4</a></li>
+            </ul>
+        </div>
+    </section>
+    <!------ FOOTER ---------------------------------------------------->
+    <footer id="foot">
+        <div class="fup">
+            <img src="assets/logos/navbar_logo.svg">
+            <a href="">Página Inicial</a>
+            <a href="#sobre">Sobre Nós</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#artigos">Artigos</a>
+            <a href="#equipe">Equipe</a>
+            <a href="">Contato</a>
+            <a href="">UFPR</a>
+        </div>
+        <div class="fdown">
+            <div class="fleft">
+                <div class="fd"><img src="assets/logos/language.svg"><a>Portugues</a></div>
+            </div>
+            <div class="logos">
+                <a href="https://www.instagram.com/labmeta.ufpr/"><img src="assets/logos/Intagram.svg" aria-label="Visite o Instagram do LabMeta"></a>
+                <a href="https://www.linkedin.com/company/laborat%C3%B3rio-de-metaverso/"><img href="" src="assets/logos/ln2.svg" aria-label="Visite o LinkedIn oficial do LabMeta"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
