@@ -70,21 +70,11 @@ h1{
     text-transform: uppercase;
     display: block;
 }
-@keyframes scale_wscroll{
-    0% {scale: 0 1;}
-    40% {scale: 1 1;}
-    100%{scale: 1 1;}
-}
-.h1_divider {
+.h1_divider{
     border: 0;
     height: 2px;
     background-color: var(--lm_white);
     margin-bottom: 50px;
-    animation: scale_wscroll;
-    scale: 0 1;
-    transform-origin: left;
-    animation-timeline: view(block);
-    
 }
 
 
@@ -245,12 +235,13 @@ h1{
     overflow-y: auto;
     flex-wrap: nowrap;
     width: 100%;
-    width: 100svw;
+    width: 100svw; /* for mobile devices */
     border-radius: var(--edge-roundness);
   }
 .card, .card2{
     scroll-snap-align: center;
-    min-width: 270px;
+    min-height: 570px;
+    min-width: 260px;
     padding: 50px 25px;
     margin-right: 25px;
     border-radius: var(--edge-roundness);
@@ -261,7 +252,6 @@ h1{
 
 .imagecontainer, .imagecontainer2{
     aspect-ratio: 1/1;
-    background-image: url(/Labmeta-testgrounds/assets/projects/img1.jpg);
     background-size: cover;
     background-position: 50%;
     border-radius: var(--edge-roundness);
@@ -287,19 +277,16 @@ h1{
 .card-header, .card-header2{
     overflow-wrap: break-word;
     text-wrap: balance;
-    font-size: 28px;
+    font-size: 32px;
     line-height: 1em;
     font-weight: 700;
     letter-spacing: -2px;
 }
 .card-content, .card-content2{
     overflow-wrap: break-word;
-    text-wrap: balance;
-    letter-spacing: 0.01em;
-    word-spacing: 0.1em;
     flex: 1;
     hyphens: auto;
-    overflow-y: scroll;
+    overflow-y: hidden;
     height: 8lh;
     font-weight: 100;
     &::-webkit-scrollbar {
