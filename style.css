@@ -570,6 +570,14 @@ footer {
     padding: 10vh 4vw;
 }
 
+.contact a{
+    text-decoration: none;
+}
+
+.contact:hover{
+    text-decoration: underline;
+}
+
 .contact-logo{
     display: flex;
     padding-top: 60px;
@@ -584,8 +592,6 @@ footer {
 }
 
 .contact-list-box{
-    /* margin-top: 8vh;
-    margin-bottom: 16vh; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -597,13 +603,10 @@ footer {
     padding: 0;
 }
 
-.contact-list-box li:hover{
-
-}
-
 .contact-list-box li{
     opacity: 0;
     list-style: none;
+    line-height: 50px;
     line-height: 3lh;
     animation-name: fadeInTop;
     animation-timing-function: ease-out;
@@ -618,6 +621,7 @@ footer {
     }
     to { opacity: 1 }
 }
+
 
 .contact-list-box li:nth-child(1) {
     animation-delay: 0s;
