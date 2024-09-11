@@ -288,7 +288,7 @@ h1{
     flex: 1;
     hyphens: auto;
     overflow-y: hidden;
-    height: 20vh;
+    height: 25vh;
     height: 8lh;
     font-weight: 100;
     &::-webkit-scrollbar {
@@ -299,7 +299,7 @@ h1{
     scroll-behavior: smooth;
 }
 .info-button, .info-button2{
-    margin-top: 4vh;
+    margin-top: 50px;
     text-wrap: nowrap;
     background-color: #02040292;
     border: none;
