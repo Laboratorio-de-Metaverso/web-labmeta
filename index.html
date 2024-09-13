@@ -26,36 +26,37 @@
                     </ul>
                 </nav>
             </div>
-            <script type="module">
-                import * as THREE from './js/three.module.js';
-                import { APP } from './js/app.js';
-                
-                // Verifica se o dispositivo é um celular
-                function isMobileDevice() {
-                    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-                }
-
-                // Se não for um celular, executa o código
-                    window.THREE = THREE; // Used by APP Scripts.
-
-                    var loader = new THREE.FileLoader();
-                    loader.load( 'app.json', function ( text ) {
-
-                        var player = new APP.Player();
-                        player.load( JSON.parse( text ) );
-                        player.setSize( window.innerWidth, window.innerHeight );
-                        player.play();
-
-                        var containerDiv = document.getElementById('test'); 
-                        containerDiv.appendChild( player.dom );
-
-                        window.addEventListener( 'resize', function () {
-                            player.setSize( window.innerWidth, window.innerHeight );
-                        });
-
-                    });
-            </script>
         </section>
+        
+        <script type="module">
+            import * as THREE from './js/three.module.js';
+            import { APP } from './js/app.js';
+            
+            // Verifica se o dispositivo é um celular
+            function isMobileDevice() {
+                return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+            }
+
+            // Se não for um celular, executa o código
+                window.THREE = THREE; // Used by APP Scripts.
+
+                var loader = new THREE.FileLoader();
+                loader.load( 'app.json', function ( text ) {
+
+                    var player = new APP.Player();
+                    player.load( JSON.parse( text ) );
+                    player.setSize( window.innerWidth, window.innerHeight );
+                    player.play();
+
+                    var containerDiv = document.getElementById('test'); 
+                    containerDiv.appendChild( player.dom );
+
+                    window.addEventListener( 'resize', function () {
+                        player.setSize( window.innerWidth, window.innerHeight );
+                    });
+
+                });
+        </script>
         
         <!--barra de navegacao---------------------------------------------->
         <header class="nav_principal" id="nav_principal">
@@ -124,6 +125,7 @@
                     </div>
                 </div>
             </section>
+
             <!--projetos-------------------------------------------------------->
             <section id="projetos">
                 <h1>Projetos</h1> 
@@ -136,6 +138,7 @@
                     <button id="carousel-next-button" class="carousel-next-button"></button>
                 </div>
             </section>
+
             <script>
             //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
             const scrollingWrapper = document.querySelector(".scrolling-wrapper");
@@ -254,6 +257,7 @@
                     <button id="carousel-next-button2" class="carousel-next-button2"></button>
                 </div>
             </section>
+
             <script>
             //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
             const scrollingWrapper2 = document.querySelector(".scrolling-wrapper2");
@@ -410,7 +414,7 @@
                                     <div class="profile_function"><text class="function">Coordenador</text></div>
                                     <div class="ln">
                                         <img src="assets/logos/Linkedin.svg">
-                                        <text class="ln">@marciocatapan</text>
+                                        <a href="https://www.linkedin.com/in/marciocatapan"><text class="ln">@marciocatapan</text></a>
                                     </div>
                                 </div>
                             </div>
@@ -420,10 +424,10 @@
                                 <div class="textg">
                                     <div class="profile_name"><text class="profile_name">Prof. Dra. Isabella Sierra</text></div>
                                     <div class="profile_function"><text class="function">Prof. Aux. de Pesquisa</text></div>
-                                    <div class="ln">
+                                    <!-- <div class="ln">
                                         <img src="assets/logos/Linkedin.svg">
                                         <text class="ln">@Person.Name</text>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <!-- 01 ------------------------------------------------------------->
@@ -446,7 +450,7 @@
                                     <div class="profile_function"><text class="function">Doutorando</text></div>
                                     <div class="ln">
                                         <img src="assets/logos/Linkedin.svg">
-                                        <text class="ln">@Person.Name</text>
+                                        <a href="https://www.linkedin.com/in/fuadpumarejo/"><text class="ln">@fuadpumarejo</text></a>
                                     </div>
                                 </div>
                             </div>
@@ -458,7 +462,7 @@
                                     <div class="profile_function"><text class="function">Doutorando</text></div>
                                     <div class="ln">
                                         <img src="assets/logos/Linkedin.svg">
-                                        <text class="ln">@Person.Name</text>
+                                        <a href="https://br.linkedin.com/in/lucas-gregory-g-almeida-947a07163"><text class="ln">@lucas-gregory-g-almeida</text></a>
                                     </div>
                                 </div>
                             </div>
@@ -488,7 +492,7 @@
                                     <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
                                     <div class="ln">
                                         <img src="assets/logos/Linkedin.svg">
-                                        <text class="ln">@Person.Name</text>
+                                        <a href="https://br.linkedin.com/in/mariana-almeida-541094273"><text class="ln">@mariana-almeida</text></a>
                                     </div>
                                 </div>
                             </div>
@@ -512,7 +516,7 @@
                                     <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
                                     <div class="ln">
                                         <img src="assets/logos/Linkedin.svg">
-                                        <text class="ln">@Person.Name</text>
+                                        <a href="https://www.linkedin.com/in/victoriamariane"><text class="ln">@victoriamariane</text></a>
                                     </div>
                                 </div>
                             </div>
@@ -522,10 +526,10 @@
                                 <div class="textg">
                                     <div class="profile_name"><text class="profile_name">Nickolas Quintino</text></div>
                                     <div class="profile_function"><text class="function">Pesquisador IC</text></div>
-                                    <div class="ln">
+                                    <!-- <div class="ln">
                                         <img src="assets/logos/Linkedin.svg">
                                         <text class="ln">@Person.Name</text>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <!-- 11 ------------------------------------------------------------->
@@ -545,11 +549,7 @@
                     </div>
                 </div>
             </section>
-
-            <!------ CENA 3D --------------------------------------------------->
-
         </main>
-
 
         <!------ FOOTER ---------------------------------------------------->
         <footer id="foot">
