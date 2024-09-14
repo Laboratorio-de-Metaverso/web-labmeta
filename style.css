@@ -390,7 +390,7 @@ h1{
     left: 780px;
     margin: 4vw;
     transform: translate(0, -50%);
-    top: 50%;
+    top: 46%;
     border-radius: var(--edge-roundness);
     padding: 25px;
     background-size: cover;
