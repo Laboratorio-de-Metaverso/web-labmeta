@@ -424,7 +424,7 @@ h1{
     flex-wrap: wrap;
     align-items: flex-start;
     align-content: space-around;
-    justify-content: center;
+    
 }
 .article_chunk{
     width: 40%;
@@ -743,6 +743,9 @@ footer {
 }
 
 @media (max-width: 895px) {
+    #artigos_importados_horizontal{
+        justify-content: center;
+    }
     .sobreAux{
         display: flex;
         flex-direction: column;
