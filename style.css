@@ -42,6 +42,7 @@ body{
 /* Track */
 ::-webkit-scrollbar-track { 
     border-radius: 100%;
+    background-color: #00000000;
 }
    
 /* Handle */
@@ -343,13 +344,17 @@ h1{
 
 /* --------artigos-------- */
 #artigos{
-    max-width: 700px;
     padding-top: 8vh;
+}
+#publications{
+    padding-top: 8vh;
+    max-width: 700px;
 }
 .article_title{
     display: flex;
+    width: fit-content;
     align-items: center;
-    font-size: 24px;
+    font-size: 32px;
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -365,6 +370,7 @@ h1{
     width: fit-content;
     font-weight: 600;
     font-style: italic;
+    /* margin-bottom: 1vh; */
     border-width: 1px;
     border-style: solid;
     border-left: 0;
@@ -372,8 +378,70 @@ h1{
     border-top: 0;
 }
 .third{
+    margin: 3vh 0 6vh;
+    display: block;
     color: var(--lm_green);
     font-weight: 100;
+}
+.abstract{
+    width: fit-content;
+    max-width: 750px;
+    position: fixed;
+    left: 750px;
+    margin: 4vw;
+    transform: translate(0, -50%);
+    top: 50%;
+    border-radius: var(--edge-roundness);
+    padding: 25px;
+    background-size: cover;
+    background-image: url(assets/fundo/fundopreto.png);
+    transition: all 1s ease;
+    animation-name: fadeInAbstract;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+    animation-duration: 0.3s;
+    display: none;
+}
+.fourth{
+    hyphens: auto;
+    line-height: 1.75em;
+    letter-spacing: 0.05em;
+    text-align: left;
+    word-spacing: 0.1em;
+    display: block;
+    max-height: 50vh;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.artigo-wrapper{
+    align-items: center;
+}
+#artigos_importados_horizontal{
+    margin: 8vh 0 8vh 0;
+    gap: 8vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: space-around;
+    justify-content: center;
+}
+.article_chunk{
+    width: 40%;
+    min-width: 350px;
+}
+
+@keyframes fadeInAbstract {
+    from {
+        opacity: 0;
+        transform: translateY(-53%);
+    }
+    to { opacity: 1 }
+}
+
+@media (min-width: 1290px) {
+    .highlightAbstract{
+        display: block;
+    }
 }
 
 /* --------equipe-------- */

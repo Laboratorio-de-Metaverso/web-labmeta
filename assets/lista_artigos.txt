@@ -1,23 +1,22 @@
 Development of a Virtual Reality Environment Using Ergonomic Principles: Recommendations for Future Projects
-NOV•2022
+2022•07•30
 Isabella de Souza Sierra, Márcio Fontana Catapan, Mariana Gertrudes Prokopowiski de Oliveira, Nickolas K. Quintino, Sofia Simões de Castro Lima, Victória Mariane Cardoso Silva
-
+Recently, virtual reality technology has awakened considerable global interest, leading to a continuous pursuit of advancements in this field. This article describes the process of developing a Virtual Reality (VR) experience of Labmeta Laboratory, located at the Federal University of Paraná. <br /> The project aimed to create an accurate digital representation of the laboratory using modeling, texturing, and interaction techniques within the Unreal Engine game engine. The VR experience was later converted for the Android platform to be used with the Oculus Quest 2. Additionally, the authors evaluated the usage of the headset during the VR experience, collecting data on usability, graphic quality, immersion, and comfort, enabling a comprehensive assessment of the technology.
 https://ojs.studiespublicacoes.com.br/ojs/index.php/cadped/article/view/1453
 
 Avatar Modeling for the Metaverse
-NOV•2022
+2022
 Sofia Simões, Márcio Catapan
-
+The metaverse has garnered global interest due to the advancement of virtual reality (VR). Avatars play a pivotal role in the metaverse, acting as a 'second self' for users. This ongoing research aims to identify the optimal approach to avatar creation, considering effectiveness, accessibility, and acceptance. Consequently, this study fills a gap in scientific literature by providing a comparative analysis for avatar creation in the metaverse, utilizing the Design Science Research (DSR) methodology. The research will provide valuable insights for the development of more effective platforms, maximizing user identification and interaction in the metaverse.
 https://ojs.studiespublicacoes.com.br/ojs/index.php/cadped/article/view/1425/1289
 
 Study of brain waves in the learning process in virtual reality
-NOV•2022
-Victoria Mariane,Márcio Catapan,Aline Sviatowski,Amanda Santiago,Linnyer Aylon, Rodrigo Hübner
-
+2022•07•29
+Victoria Mariane, Márcio Catapan, Aline Sviatowski, Amanda Santiago, Linnyer Aylon, Rodrigo Hübner
+Virtual reality is a continually advancing immersive technology that holds immense promise across various fields, notably in education. One of the greatest advantages of virtual reality is its ability to create simulated and interactive experiences, allowing students to learn within a controlled environment. Research revealed that the ability to maintain focus and attention during a task was a significant factor in the academic performance of elementary school students. Consequently, the guiding question of this article is: Can virtual reality, due to its immersive nature, enhance focus and consequently, the learning curve? Considering this, the objective is to analyze neural waves in virtual reality, aiming to provide data for the analysis of how new technologies can be optimized to benefit the educational process. The first experiment documented in this article has already demonstrated a notable increase in Beta rhythms in the electroencephalogram when employing VR devices, which is the brain wave most associated with focus. However, to evaluate the learning rate and the knowledge retention by the volunteers, this study necessitates an additional set of tests.
 https://ojs.studiespublicacoes.com.br/ojs/index.php/cadped/article/view/1452
 
-Study of brain waves in the learning process in virtual reality
-NOV•2022
-Victoria Mariane,Márcio Catapan,Aline Sviatowski,Amanda Santiago,Linnyer Aylon, Rodrigo Hübner
-
-https://ojs.studiespublicacoes.com.br/ojs/index.php/cadped/article/view/1452
+Construction of Interfaces in Virtual Reality: a systematic review focusing on Ergonomics and User Experience
+2024
+Sofia Simões de Castro Lima, Márcio Catapan, Jun Zeredo
+Virtual reality technology has raised considerable global interest, instigating a relentless search for advances in this field. This article fills a gap in the literature, which demands more studies on the construction of interfaces in virtual reality. This area, often left in the background, lacks research, especially about ergonomics and the user experience (UX) associated with the user interface (UI). Thus, this study aims to conduct a systematic literature review to establish guidelines to be followed in this area. The literature review, being a rigorous method, consists in the careful analysis of the material available in these areas, aiming thus the development of reasoned guidelines. With these guidelines, this research aims to optimize the user experience and improve ergonomic aspects when using virtual reality.

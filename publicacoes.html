@@ -42,13 +42,13 @@
         });
     </script>
 
-<section id="artigos">
+<section id="publications">
     <h1>Publicações</h1>
     <hr class="h1_divider">
-    <p id="artigos_importados">artigos vão aqui</p>
+    <div id="artigos_importados"></div>
 </section>
 <script> // Style every second line
-    $(document).ready(function(){
+    $(document).ready(function(){ 
         $('#artigos_importados').load('assets/lista_artigos.txt', function(response, status, xhr) {
             if (status == "error") {
                 console.error("Error loading the file: " + xhr.status + " " + xhr.statusText);
@@ -57,20 +57,54 @@
                 var lines = content.split('\n'); // Split the content into lines based on newline
                 var styledContent = ''; // Variable to store styled content
                 for (var i = 0; i < lines.length; i++) {
-                    // Check if the line number is a multiple of 4 or 3
-                    if ((i + 1) % 2 === 0) {
-                    styledContent += '<span class="second">' + lines[i] + '</span><br>'; // Style every second line
-                    } else if ((i + 1) % 3 === 0) {
-                    styledContent += '<span class="third">' + lines[i] + '</span><br>'; // Style every third line
-                    } else if (i % 3 == 0){
-                    var link = lines[i + 4];
-                    styledContent += `<a class="article_title" href="${link}">${lines[i]}</a><br>`; // Default styling for other lines
+                    var classNum = (i % 6) + 1; // Assign classes 1 through 6
+                    if (classNum === 1) {
+                        var link = lines[i + 4]; // set line 5 as a variable "link"
+                        styledContent += `<a class="article_title title_${i + 1}" data-abstract-id="${i + 1}" href="${link}" target="_blank">${lines[i]}</a>`; // Class 1
+                    } else if (classNum === 2) {
+                        styledContent += `<span class="second">${lines[i]}</span><br>`; // Class 2
+                    } else if (classNum === 3) {
+                        styledContent += `<span class="third">${lines[i]}</span><br>`; // Class 3
+                    } else if (classNum === 4) {
+                        styledContent += `<div class="abstract" id="abstract_${i - 2}"> <h1>Abstract</h1> <div class="abstract-text"><p class="fourth">${lines[i]}</p></div></div><br>`; // Class 4 (abstract)
+                    } else if (classNum === 5) {
+                        // Placeholder for additional content if needed
+                    } else if (classNum === 6) {
+                        // Placeholder for additional content if needed
                     }
                 }
                 $('#artigos_importados').html(styledContent); // Replace the content of the element with the styled content
-        }
+                
+                if ($(window).width() >= 1200) {
+                    // Hover detection and class toggle
+                    var hovered_title = 0;
+                    var previousAbstractId = null;
+
+                    $('.article_title').on('mouseenter', function() {
+                        var abstractId = $(this).data('abstract-id');
+
+                        if (previousAbstractId && previousAbstractId !== abstractId) {
+                            $('#abstract_' + previousAbstractId).removeClass('highlightAbstract'); // Remove class from previously highlighted abstract
+                        }
+                        
+                        $('#abstract_' + abstractId).addClass('highlightAbstract'); // Add class to current abstract
+                        previousAbstractId = abstractId; // Update the previously highlighted abstract ID
+                    });
+
+                    $('.article_title').on('mouseleave', function() {
+                        // Optional: Add code for mouse leave action
+                    });
+                                    // Close all highlights when mouse leaves #publications
+                $('#publications').on('mouseleave', function() {
+                    if (previousAbstractId) {
+                        $('#abstract_' + previousAbstractId).removeClass('highlightAbstract'); // Remove class from currently highlighted abstract
+                        previousAbstractId = null; // Reset the previously highlighted abstract ID
+                    }
+                });
+                }
+            }
+        });
     });
-});
 </script>
 
     <!------ FOOTER ---------------------------------------------------->
