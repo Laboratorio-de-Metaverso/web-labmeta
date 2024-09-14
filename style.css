@@ -415,6 +415,7 @@ h1{
 }
 .artigo-wrapper{
     align-items: center;
+    margin-top: 12vh;
 }
 #artigos_importados_horizontal{
     margin: 8vh 0 8vh 0;
