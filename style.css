@@ -387,7 +387,7 @@ h1{
     width: fit-content;
     max-width: 750px;
     position: fixed;
-    left: 750px;
+    left: 780px;
     margin: 4vw;
     transform: translate(0, -50%);
     top: 50%;
