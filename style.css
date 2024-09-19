@@ -248,7 +248,7 @@ h1{
     border-radius: var(--edge-roundness);
     background-size: cover;
     background-image: url(assets/fundo/fundopreto.png);
-    transition: background-image 1s ease;
+    transition: background-image 0.2s ease;
 }
 
 .imagecontainer, .imagecontainer2{
@@ -615,7 +615,7 @@ footer {
     display: flex;
     flex-direction: row;
     /* width: 50%; */
-    align-items: center;
+    align-items: baseline;
     justify-content: space-around;
 }
 
@@ -641,6 +641,8 @@ footer {
         bottom: 4svh;
         right: 4vh;
         transition: all 0.2s ease-out;
+        animation: fadeInShort ease-in;
+        animation-timeline: scroll();
     }
 
     .logos:hover{
@@ -649,6 +651,11 @@ footer {
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
     }
+}
+
+@keyframes fadeInShort{
+    97% {opacity: 30%;}
+    100% {opacity: 100%;}
 }
 
 .firstMobile{
