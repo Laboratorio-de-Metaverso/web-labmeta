@@ -193,9 +193,18 @@ var APP = {
                 var fps = 1000 / (time - prevTime);
                 if (fps < fpsThreshold) {
                     console.warn("Low FPS detected (" + fps + "), stopping rendering.");
-                    this.stop();
-                    return;
-                }
+					// Remove the 3D scene element with id "test" I dont know what im doing
+					var sceneElement = document.getElementById("test");
+					if (sceneElement) {
+						sceneElement.parentNode.removeChild(sceneElement);
+					}
+					var sceneElement = document.getElementById("nav_principal");
+					if (sceneElement) {
+						sceneElement.classList.add('no_animation'); // Add your desired class
+					}
+					this.stop();
+					return;
+				}
                 lastCheckTime = time;
             }
 
@@ -234,9 +243,9 @@ var APP = {
 			document.removeEventListener( 'pointermove', onPointerMove );
 
 			dispatch( events.stop, arguments );
-
+			// Hide the canvas by setting its visibility to 'none'
+			this.canvas.style.visibility = 'none';
 			renderer.setAnimationLoop( null );
-
 		};
 
 		this.render = function ( time ) {

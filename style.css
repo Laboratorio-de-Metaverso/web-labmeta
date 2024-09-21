@@ -125,6 +125,9 @@ h1{
     height: 80px;
     z-index: 2;
 }
+.no_animation{
+    animation: none;
+}
 .barra_de_nav{
     display: flex;
     gap: 2vw;
