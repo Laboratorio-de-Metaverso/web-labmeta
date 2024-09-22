@@ -17,7 +17,7 @@ function isHardwareAccelerationEnabled() {
     return 0; // WebGL não disponível
 }
 
-var sceneElement = document.getElementById("loadingScreen");
+var loadingScreen = document.getElementById("loadingScreen");
 var aux_Gl = isHardwareAccelerationEnabled();
 
 var APP = {
@@ -25,9 +25,7 @@ var APP = {
 	Player: function () {
 		if (isMobileDevice() || aux_Gl == 0){
 			console.log("Rendering disabled due to mobile device or no hardware acceleration.");
-			if (sceneElement) {
-				sceneElement.parentNode.removeChild(sceneElement);
-			}
+			loadingScreen.parentNode.removeChild(loadingScreen);
 			return;
 		}
 		var loadingScreen = document.getElementById('loadingScreen');
@@ -203,8 +201,8 @@ var APP = {
 					if (sceneElement) {
 						sceneElement.parentNode.removeChild(sceneElement);
 					}
-					if (sceneElement) {
-						sceneElement.parentNode.removeChild(sceneElement);
+					if (loadingScreen) {
+						loadingScreen.parentNode.removeChild(loadingScreen);
 					}
 					var nav_principal = document.getElementById("nav_principal");
 					if (nav_principal) {
