@@ -185,7 +185,7 @@ var APP = {
 
 		var time, startTime, prevTime;
 		var fpsThreshold = 15; // FPS threshold to disable rendering
-        var fpsCheckInterval = 3000; // Check every 3 seconds
+        var fpsCheckInterval = 2000; // Check every 2 seconds
         var lastCheckTime = 0;
 
 		function animate() {
@@ -214,7 +214,7 @@ var APP = {
 				} else {
 					loadingScreen.style.display = 'none';
 				}
-                lastCheckTime = time;
+                // lastCheckTime = time;
             }
 
 			try {

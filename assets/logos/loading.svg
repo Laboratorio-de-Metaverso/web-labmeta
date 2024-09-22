@@ -29,10 +29,10 @@
          }
       }
       #loadingIconFrame {
-      animation: dashFrame 3s ease-out infinite;
+      animation: dashFrame 2s ease-out infinite;
       }
       #loadingIconEye1, #eye2 {
-      animation: dashEye 3s ease-out infinite;
+      animation: dashEye 2s ease-out infinite;
       }
   </style>
   <path

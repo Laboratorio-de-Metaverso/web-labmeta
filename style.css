@@ -96,11 +96,11 @@ h1{
     overflow: hidden;
     background-color: var(--lm_black);
     z-index: 4;
-    animation: fadeload 3s linear;
+    animation: fadeload 2s linear;
 }
 #loadingScreen img{
     width: 15%;
-    animation: fadeloadimg 3s linear;
+    animation: fadeloadimg 2s linear;
 }
 @keyframes fadeloadimg {
     0% {
