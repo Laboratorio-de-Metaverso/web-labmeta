@@ -96,6 +96,7 @@ h1{
     background-color: var(--lm_black);
     z-index: 4;
     animation: fadeload 2s linear;
+    animation-fill-mode: forwards;
 }
 #loadingScreen img{
     width: 15%;
@@ -115,6 +116,7 @@ h1{
     }
     100% {
        opacity: 0;
+       display: none;
     }
 }
 .nav_landing_page{
