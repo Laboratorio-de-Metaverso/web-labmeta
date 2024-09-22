@@ -904,10 +904,12 @@ footer {
     nav .menu_toggle span{
         display: block;
         width: 30px;
-        height: 3px;
+        border: 2px solid var(--lm_white);
+        height: 0px;
         background-color: var(--lm_white);
         margin: 25px;
         cursor: pointer;
+        border-radius: 3px;
     }
 
     nav .menu_toggle span:nth-last-of-type(1) {
@@ -930,6 +932,7 @@ footer {
         top: 0px;
         width: 30px;
         height: 30px;
+        border: none;
         background-color: #00000000;
     }
 
