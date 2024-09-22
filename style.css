@@ -84,7 +84,40 @@ h1{
     display: none;
 }
 
-
+#loadingScreen{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 100%;
+    width: 100svw;
+    height: 100svh;
+    overflow: hidden;
+    background-color: var(--lm_black);
+    z-index: 4;
+    animation: fadeload 3s linear;
+}
+#loadingScreen img{
+    width: 15%;
+    animation: fadeloadimg 3s linear;
+}
+@keyframes fadeloadimg {
+    0% {
+       opacity: 0;
+    }
+    100% {
+       opacity: 90;
+    }
+}
+@keyframes fadeload {
+    85% {
+       opacity: 100;
+    }
+    100% {
+       opacity: 0;
+    }
+}
 .nav_landing_page{
     width: 100%;
     width: 100svw;
@@ -136,7 +169,7 @@ h1{
 }
 
 .navbar_logo{
-    margin-left: 4vw;
+    margin-left: 2vw;
     height: 1.5em;
     box-sizing: border-box;
 }
@@ -753,6 +786,10 @@ footer {
 }
 
 @media (max-width: 895px) {
+    #loadingScreen img{
+        width: 30%;
+    }
+
     #artigos_importados_horizontal{
         justify-content: center;
     }

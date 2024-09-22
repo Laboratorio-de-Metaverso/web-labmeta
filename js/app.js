@@ -25,8 +25,11 @@ var APP = {
 	Player: function () {
 		if (isMobileDevice() || aux_Gl == 0){
 			console.log("Rendering disabled due to mobile device or no hardware acceleration.");
+			loadingScreen.style.display = 'none';
 			return;
 		}
+		var loadingScreen = document.getElementById('loadingScreen');
+        loadingScreen.style.display = 'flex';
 
 		var renderer = new THREE.WebGLRenderer( { antialias: true } );
 		renderer.setPixelRatio( window.devicePixelRatio ); // TODO: Use player.setPixelRatio()
@@ -198,12 +201,18 @@ var APP = {
 					if (sceneElement) {
 						sceneElement.parentNode.removeChild(sceneElement);
 					}
-					var sceneElement = document.getElementById("nav_principal");
+					var sceneElement = document.getElementById("loadingScreen");
 					if (sceneElement) {
-						sceneElement.classList.add('no_animation'); // Add your desired class
+						sceneElement.parentNode.removeChild(sceneElement);
+					}
+					var nav_principal = document.getElementById("nav_principal");
+					if (nav_principal) {
+						nav_principal.classList.add('no_animation'); // Add your desired class
 					}
 					this.stop();
 					return;
+				} else {
+					loadingScreen.style.display = 'none';
 				}
                 lastCheckTime = time;
             }

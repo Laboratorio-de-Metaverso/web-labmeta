@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="464"
+   height="290"
+   viewBox="0 0 464 290"
+   fill="none"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <style
+     id="style1">
+      @keyframes dashFrame {
+         0% {
+            stroke-dashoffset: 1660;
+         }
+         100% {
+            stroke-dashoffset: 0;
+         }
+      }
+      @keyframes dashEye {
+         0% {
+            stroke-dashoffset: 340;
+         }
+         100% {
+            stroke-dashoffset: 0;
+         }
+      }
+      #loadingIconFrame {
+      animation: dashFrame 3s ease-out infinite;
+      }
+      #loadingIconEye1, #eye2 {
+      animation: dashEye 3s ease-out infinite;
+      }
+  </style>
+  <path
+     d="M 459,25.078817 C 459,13.989307 450.001,5.0000366 438.899,5.0000361 L 25.100701,5.000018 c -11.0981,-4e-7 -20.1007004,8.989269 -20.1007009,20.078799 L 5.681021,264.06102 c -5.64e-4,0.062 -0.00352,0.123 -0.00352,0.185 0,11.086 8.999141,20.079 20.100701,20.079 l 150.552799,0.675 c 11.105,0 20.106,-8.993 20.106,-20.079 l 15.462,-106.429 h 0.336 c 1.702,-9.366 9.897,-16.476 19.765,-16.476 9.868,0 18.058,7.11 19.76,16.476 h 0.341 l 15.462,106.429 c 0,11.086 9.003,20.079 20.101,20.079 l 151.235,-0.675 c 11.102,0 20.101,-8.993 20.101,-20.079 z"
+     fill="#F3EFF5"
+     id="loadingIconFrame"
+     style="fill:none;stroke:#f3eff5;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1660, 1700;stroke-dashoffset:0;stroke-opacity:1" />
+  <path
+     style="fill:none;stroke:#f3eff5;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:340, 350;stroke-dashoffset:0;stroke-opacity:1"
+     d="m 175,158.49202 c 0,29.592 -24.016,53.578 -53.637,53.578 -29.627399,0 -53.641099,-23.986 -53.641099,-53.578 0,-29.592 24.0137,-53.5774 53.641099,-53.5774 29.621,0 53.637,23.9854 53.637,53.5774 z"
+     id="loadingIconEye1" />
+  <path
+     style="fill:none;stroke:#f3eff5;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:340, 350;stroke-dashoffset:0;stroke-opacity:1"
+     d="m 397.449,158.49202 c 0,29.592 -24.012,53.578 -53.636,53.578 -29.628,0 -53.642,-23.986 -53.642,-53.578 0,-29.592 24.014,-53.5774 53.642,-53.5774 29.624,0 53.636,23.9854 53.636,53.5774 z"
+     id="eye2" />
+</svg>
