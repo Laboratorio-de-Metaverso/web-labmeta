@@ -28,8 +28,6 @@ var APP = {
 			loadingScreen.parentNode.removeChild(loadingScreen);
 			return;
 		}
-		var loadingScreen = document.getElementById('loadingScreen');
-        loadingScreen.style.display = 'flex';
 
 		var renderer = new THREE.WebGLRenderer( { antialias: true } );
 		renderer.setPixelRatio( window.devicePixelRatio ); // TODO: Use player.setPixelRatio()
