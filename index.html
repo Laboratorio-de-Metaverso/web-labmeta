@@ -95,11 +95,22 @@
         <main>
             <section class="firstMobile">
                 <div class="heroMobile">
-                    <video class="videoHero" preload autoplay muted loop>
-                        <source src="assets/video.mp4" type="video/mp4">
+                    <video class="videoHero" id="videoHero" controls autoplay loop muted src="assets/video.mp4">
                     </video>
                 </div>
             </section>
+            <script>
+                const videos = [document.getElementById('videoHero'), document.getElementById('videoAboutUs')];
+                videos.forEach(video => {
+                  video.addEventListener('click', function() {
+                    if (video.paused) {
+                      video.play();
+                    } else {
+                      video.pause();
+                    }
+                  });
+                });
+            </script>
             <!--sobre----------------------------------------------------------->
             <section id="sobre"> 
                 <div class="container sobreAux">
@@ -122,8 +133,8 @@
                         </div>
                     </div>
                     <div class="video">
-                        <video preload autoplay muted loop>
-                            <source src="assets/video.mp4" type="video/mp4">
+                        <video id="videoAboutUs" controls autoplay muted loop src="assets/video.mp4">
+                        </video>
                     </div>
                 </div>
             </section>
