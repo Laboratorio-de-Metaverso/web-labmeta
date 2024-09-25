@@ -133,7 +133,7 @@
                         </div>
                     </div>
                     <div class="video">
-                        <video id="videoAboutUs" controls preload muted loop src="assets/video.mp4">
+                        <video id="videoAboutUs" controls preload autoplay muted loop src="assets/video.mp4">
                         </video>
                     </div>
                 </div>
@@ -219,27 +219,34 @@
                             card.appendChild(infoButton);
                         }
 
-                            /* muda as imagens quando essas são clicadas */
-                            var aux = 2; //começa na primeira imagem entao deve ir para a 2
-                            const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
+                        /* muda as imagens quando essas são clicadas */
+                        var aux = 2; //começa na primeira imagem entao deve ir para a 2
+                        const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
 
-                            imagecontainers.forEach(imageContainer => {
-                                imageContainer.addEventListener('click', function() {
-                                    if (aux == 4) {
-                                    aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
-                                }
-                                aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
-                                this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
-                                });
+                        imagecontainers.forEach(imageContainer => {
+                            imageContainer.addEventListener('click', function() {
+                                if (aux == 4) {
+                                aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
+                            }
+                            aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
+                            this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
                             });
+                        });
 
                         /* função para botões funcionarem */
 
                         const prevButton = document.getElementById("carousel-prev-button");
                         const nextButton = document.getElementById("carousel-next-button");
 
-                        const card = document.querySelector(".card");
-                        const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+                        let card = document.querySelector(".card");
+                        let cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+
+                        const updateCardWidth = () => {
+                            cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+                        };
+
+                        // Add event listener for window resize
+                        window.addEventListener('resize', updateCardWidth);
 
                         prevButton.addEventListener("click", function() {
                             scrollingWrapper.scrollBy({
@@ -257,7 +264,23 @@
                 });
             });
             </script>
+            <script>
+                function updateMinWidth() {
+                    // Get the width of the sourceDiv
+                    let sourceDiv = document.getElementById('scrolling-wrapper');
+                    let sourceWidth = sourceDiv.offsetWidth;
 
+                    if (sourceWidth < 400) {
+                        // Subtract 25 and set the min-width of the targetDiv
+                        let targetDiv = document.getElementById('card1');
+                        targetDiv.style.minWidth = `${sourceWidth - 25}px`;
+                    }
+                }
+                // Run the function on page load
+                window.onload = updateMinWidth;
+                // Update min-width when window is resized
+                window.onresize = updateMinWidth;
+            </script>
             <!--eventos-------------------------------------------------------->
             <section id="eventos">
                 <h1>Eventos</h1> 
@@ -357,8 +380,15 @@
                         const prevButton = document.getElementById("carousel-prev-button2");
                         const nextButton = document.getElementById("carousel-next-button2");
 
-                        const card = document.querySelector(".card");
-                        const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+                        let card = document.querySelector(".card");
+                        let cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+
+                        const updateCardWidth = () => {
+                            cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+                        };
+
+                        // Add event listener for window resize
+                        window.addEventListener('resize', updateCardWidth);
 
                         prevButton.addEventListener("click", function() {
                             scrollingWrapper2.scrollBy({

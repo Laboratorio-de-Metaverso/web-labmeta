@@ -263,9 +263,6 @@ h1{
     align-items: center;
 }
 .scrolling-wrapper, .scrolling-wrapper2 {
-    &::-webkit-scrollbar {
-        display: none;
-      }
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     display: flex;
@@ -273,14 +270,16 @@ h1{
     overflow-y: auto;
     flex-wrap: nowrap;
     width: 100%;
-    width: 100svw; /* for mobile devices */
+    width: 100svw;
     border-radius: var(--edge-roundness);
-  }
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
 .card, .card2{
     scroll-snap-align: center;
-    min-height: 570px;
-    min-width: 260px;
-    padding: 50px 25px;
+    padding: 0px 25px 50px 25px;
+    min-width: 250px;
     margin-right: 25px;
     border-radius: var(--edge-roundness);
     background-size: cover;
@@ -295,14 +294,15 @@ h1{
     border-radius: var(--edge-roundness);
     transition: background-image 0.5s ease;
     overflow: hidden;
-    margin-bottom: 8%;
     cursor: pointer;
+    width: 100%;
+    height: 100%;
 }
 
 .imagecontainer-overlay, .imagecontainer-overlay2{
     display: flex;
     box-sizing: border-box;
-    padding: 2%;
+    padding: 2px;
     flex-direction: column;
     justify-content: end;
     position: relative;
@@ -326,9 +326,10 @@ h1{
     flex: 1;
     hyphens: auto;
     overflow-y: hidden;
-    height: 25vh;
-    height: 8lh;
+    height: 20vh;
     font-weight: 100;
+    margin-top: 8%;
+    margin-bottom: 8%;
     &::-webkit-scrollbar {
         display: none;
       }
@@ -337,7 +338,6 @@ h1{
     scroll-behavior: smooth;
 }
 .info-button, .info-button2{
-    margin-top: 50px;
     text-wrap: nowrap;
     background-color: #000000b5;
     border: none;
@@ -373,9 +373,20 @@ h1{
     background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxLjJlbSIgaGVpZ2h0PSIxLjJlbSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZjNlZmY1IiBkPSJNMTMuNTQgMThhMi4wNiAyLjA2IDAgMCAxLTEuMy0uNDZsLTUuMS00LjIxYTEuNyAxLjcgMCAwIDEgMC0yLjY2bDUuMS00LjIxYTIuMSAyLjEgMCAwIDEgMi4yMS0uMjZhMS43NiAxLjc2IDAgMCAxIDEuMDUgMS41OXY4LjQyYTEuNzYgMS43NiAwIDAgMS0xLjA1IDEuNTlhMi4yIDIuMiAwIDAgMS0uOTEuMiIvPjwvc3ZnPg==");
 }
 
-@media (max-width: 390px) {
-    .carousel-next-button, .carousel-next-button2, .carousel-prev-button, .carousel-prev-button2{
+@media (max-width: 440px) {
+    .carousel-prev-button, .carousel-prev-button2, .carousel-next-button, .carousel-next-button2{
         display: none;
+    }
+    .carouselview, .carouselview2{
+        gap: 0;
+    }
+    h1{
+        font-size: 18vw;
+    }
+    .card, .card2{
+        /* min-width: 87.2%; */
+        min-width: 70%;
+        padding: 0px 4vw 50px 4vw;
     }
 }    
 
@@ -665,30 +676,6 @@ footer {
     align-items: center;
 }
 
-@media (min-width: 895px) {
-    .logos {    
-        opacity: 30%;
-        background-color: #00000000;
-        backdrop-filter: blur(0px);
-        -webkit-backdrop-filter: blur(0px);
-        position: fixed;
-        border-radius: var(--edge-roundness);
-        padding: 15px;
-        align-self: baseline;
-        bottom: 4svh;
-        right: 4vh;
-        transition: all 0.2s ease-out;
-        animation: fadeInShort ease-in;
-        animation-timeline: scroll();
-    }
-
-    .logos:hover{
-        opacity: 100%;
-        background-color: #00000017;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-    }
-}
 
 @keyframes fadeInShort{
     97% {opacity: 30%;}
@@ -784,6 +771,27 @@ footer {
     .card:hover, .card2:hover{
         background-image: url(assets/fundo/fundoroxo.png);
     }
+    .logos {    
+        opacity: 30%;
+        background-color: #00000000;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        position: fixed;
+        border-radius: var(--edge-roundness);
+        padding: 15px;
+        align-self: baseline;
+        bottom: 4svh;
+        right: 4vh;
+        transition: all 0.2s ease-out;
+        animation: fadeInShort ease-in;
+        animation-timeline: scroll();
+    }
+    .logos:hover{
+        opacity: 100%;
+        background-color: #00000017;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
 }
 
 @media (max-width: 895px) {
@@ -802,7 +810,7 @@ footer {
     /* main section for mobile */
     .text_box{
         margin-top: 100vw;
-        padding: 4vw;
+        padding: 8vw;
     }
     .video {
         border-radius: 0;
@@ -955,7 +963,7 @@ footer {
     }
 
     section{
-        padding: 4vw;
+        padding: 8vh 8vw 8vh;
     }
 
     .nav_principal{
