@@ -381,7 +381,7 @@ h1{
         gap: 0;
     }
     h1{
-        font-size: 18vw;
+        font-size: 14vw;
     }
     .card, .card2{
         /* min-width: 87.2%; */
@@ -526,7 +526,7 @@ h1{
 }
 
 .profile_container {
-    padding: 0.5vw;
+    padding: 1vw;
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
@@ -834,6 +834,15 @@ footer {
   
     body{
         overflow-x: hidden;
+    }
+
+    .grid_item{
+        width: 140px;
+        height: 410px;
+    }
+
+    .profile_image img{
+        width: 140px;
     }
 
     .firstMobile{
