@@ -788,10 +788,18 @@ footer {
         animation-timeline: scroll();
     }
     .logos:hover{
-        opacity: 100%;
         background-color: #00000017;
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
+        opacity: 100%;
+    }
+    .logos-insta, .logos-ln{
+        opacity: 30%;
+        animation: fadeInShort ease-in;
+        transition: all 0.2s ease-out;
+    }
+    .logos-insta:hover, .logos-ln:hover{
+        opacity: 100%;
     }
 }
 

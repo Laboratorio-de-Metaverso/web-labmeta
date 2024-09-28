@@ -183,7 +183,7 @@ var APP = {
 
 		var time, startTime, prevTime;
 		var fpsThreshold = 15; // FPS threshold to disable rendering
-        var fpsCheckInterval = 3000; // Check every 2 seconds
+        var fpsCheckInterval = 3000; // Check every 3 seconds
         var lastCheckTime = 0;
 		var fpsChecked = false;
 
