@@ -183,14 +183,15 @@ var APP = {
 
 		var time, startTime, prevTime;
 		var fpsThreshold = 15; // FPS threshold to disable rendering
-        var fpsCheckInterval = 2000; // Check every 2 seconds
+        var fpsCheckInterval = 3000; // Check every 2 seconds
         var lastCheckTime = 0;
+		var fpsChecked = false;
 
 		function animate() {
 
 			time = performance.now();
 
-			if (time - lastCheckTime > fpsCheckInterval) {
+			if (!fpsChecked && time - lastCheckTime > fpsCheckInterval) {
                 var fps = 1000 / (time - prevTime);
                 if (fps < fpsThreshold) {
                     console.warn("Low FPS detected (" + fps + "), stopping rendering.");
@@ -211,7 +212,7 @@ var APP = {
 				} else {
 					loadingScreen.style.display = 'none';
 				}
-                // lastCheckTime = time;
+				fpsChecked = true; // Mark as checked to avoid rechecking
             }
 
 			try {
@@ -222,22 +223,17 @@ var APP = {
 
 			renderer.render( scene, camera );
 			prevTime = time;
-
 		}
 
 		this.play = function () {
 			startTime = prevTime = performance.now();
-
 			document.addEventListener( 'keydown', onKeyDown );
 			document.addEventListener( 'keyup', onKeyUp );
 			document.addEventListener( 'pointerdown', onPointerDown );
 			document.addEventListener( 'pointerup', onPointerUp );
 			document.addEventListener( 'pointermove', onPointerMove );
-
 			dispatch( events.start, arguments );
-
 			renderer.setAnimationLoop( animate );
-
 		};
 
 		this.stop = function () {
@@ -255,46 +251,32 @@ var APP = {
 		};
 
 		this.render = function ( time ) {
-
 			dispatch( events.update, { time: time * 1000, delta: 0 /* TODO */ } );
-
 			renderer.render( scene, camera );
-
 		};
 
 		this.dispose = function () {
-
 			renderer.dispose();
-
 			camera = undefined;
 			scene = undefined;
-
 		};
 
 		//
 
 		function onKeyDown( event ) {
-
 			dispatch( events.keydown, event );
-
 		}
 
 		function onKeyUp( event ) {
-
 			dispatch( events.keyup, event );
-
 		}
 
 		function onPointerDown( event ) {
-
 			dispatch( events.pointerdown, event );
-
 		}
 
 		function onPointerUp( event ) {
-
 			dispatch( events.pointerup, event );
-
 		}
 
 		var mouseXPrev = 0;
@@ -332,14 +314,6 @@ var APP = {
 		function isMobileDevice() {
 			return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 		}
-		
-		if (!isMobileDevice()) {
-			// Coloque o código que deseja executar apenas se não for um dispositivo móvel aqui
-			// console.log("Não é um dispositivo móvel!");
-		} else {
-			// console.log("É um dispositivo móvel!");
-		}
-		
 	}
 
 };

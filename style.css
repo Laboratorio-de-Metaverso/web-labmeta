@@ -7,6 +7,7 @@
     --lm_green: #4BDBAB;
     --lm_blue: #00A7E1;
     --edge-roundness: 10px;
+    --load-time: 3s;
 
     margin: 0;
     color: var(--lm_white);
@@ -95,12 +96,12 @@ h1{
     overflow: hidden;
     background-color: var(--lm_black);
     z-index: 4;
-    animation: fadeload 2s linear;
+    animation: fadeload var(--load-time) linear;
     animation-fill-mode: forwards;
 }
 #loadingScreen img{
     width: 15%;
-    animation: fadeloadimg 2s linear;
+    animation: fadeloadimg var(--load-time) linear;
 }
 @keyframes fadeloadimg {
     0% {
