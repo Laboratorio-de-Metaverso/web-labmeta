@@ -56,7 +56,7 @@ body{
 section{
     overflow-x: hidden;
     /* cada section (sobre, eventos, projetos, artigos, membros, etc...) vai conter margens de 16vh 4vw */
-    padding: 12vh 4vw;
+    padding: 4vh 4vw;
     animation: appear_wscroll;
     animation-timeline: view();
 }
