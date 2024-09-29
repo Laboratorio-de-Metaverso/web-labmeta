@@ -773,7 +773,7 @@ footer {
         background-image: url(assets/fundo/fundoroxo.png);
     }
     .logos {    
-        opacity: 30%;
+        opacity: 80%;
         background-color: #00000000;
         backdrop-filter: blur(0px);
         -webkit-backdrop-filter: blur(0px);
@@ -786,6 +786,7 @@ footer {
         transition: all 0.2s ease-out;
         animation: fadeInShort ease-in;
         animation-timeline: scroll();
+        z-index: 4;
     }
     .logos:hover{
         background-color: #00000017;
@@ -794,7 +795,7 @@ footer {
         opacity: 100%;
     }
     .logos-insta, .logos-ln{
-        opacity: 30%;
+        opacity: 40%;
         animation: fadeInShort ease-in;
         transition: all 0.2s ease-out;
     }
