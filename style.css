@@ -339,15 +339,19 @@ h1{
     scroll-behavior: smooth;
 }
 .info-button, .info-button2{
+    display: block;
+    text-decoration: none;
     text-wrap: nowrap;
     background-color: #000000b5;
     border: none;
     padding: 5%;
     text-align: center;
-    width: 100%;
     border-radius: inherit;
     cursor: pointer;
-
+    transition: all 0.1s ease-out;
+}
+.info-button:hover, .info-button2:hover{
+    background-color: var(--lm_purple);
 }
 .carousel-next-button, .carousel-prev-button, .carousel-next-button2, .carousel-prev-button2{
     border-radius: var(--edge-roundness);

@@ -24,7 +24,6 @@
                         <li><a href="#projetos">Projetos</a></li>
                         <li><a href="#eventos">Eventos</a></li>
                         <li><a href="publicacoes.html">Publicações</a></li>
-                        <li><a href="#equipe">Equipe</a></li>
                         <li><a href="contato.html">Contato</a></li>
                     </ul>
                 </nav>
@@ -77,7 +76,6 @@
                     <li><a href="#projetos">Projetos</a></li>
                     <li><a href="#eventos">Eventos</a></li>
                     <li><a href="publicacoes.html">Publicações</a></li>
-                    <li><a href="#equipe">Equipe</a></li>
                     <li><a href="contato.html">Contato</a></li>
                 </ul>
             </nav>
@@ -176,9 +174,17 @@
                             gradientOverlay.classList.add("imagecontainer-overlay");
 
                             // create button
-                            const infoButton = document.createElement("button");
+                            const infoButton = document.createElement("a");
                             infoButton.classList.add("info-button");
+                            infoButton.id = ("infoButton_" + i);
                             infoButton.textContent = "Mais Informações";
+                            
+                            // carrega o link do projeto
+                            $.get('assets/projects/projeto' + i + '/link.txt', function(data, status) {
+                                const linkButton = data.trim();
+                                infoButton.href = linkButton;
+                                infoButton.target = "_blank";
+                            });
 
                             // create a header text with class
                             const headerText = document.createElement("h2");
@@ -318,9 +324,17 @@
                             gradientOverlay2.classList.add("imagecontainer-overlay2");
 
                             // create button
-                            const infoButton2 = document.createElement("button");
-                            infoButton2.classList.add("info-button2");
+                            const infoButton2 = document.createElement("a");
+                            infoButton2.classList.add("info-button");
+                            infoButton2.id = ("infoButton2_" + i);
                             infoButton2.textContent = "Mais Informações";
+                            
+                            // carrega o link do projeto
+                            $.get('assets/projects/projeto' + i + '/link.txt', function(data, status) {
+                                const linkButton = data.trim();
+                                infoButton.href = linkButton;
+                                infoButton.target = "_blank";
+                            });
 
                             // create a header text with class
                             const headerText2 = document.createElement("h2");
@@ -619,7 +633,6 @@
                 <a href="#sobre">Sobre Nós</a>
                 <a href="#projetos">Projetos</a>
                 <a href="publicacoes.html">Artigos</a>
-                <a href="#equipe">Equipe</a>
                 <a href="contato.html">Contato</a>
             </div>
             <div class="fdown">
