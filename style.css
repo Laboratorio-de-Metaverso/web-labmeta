@@ -504,14 +504,15 @@ h1{
     align-items: start;
     display: flex;
     flex-wrap: wrap;
-    flex-flow: auto;
     gap: 4vw;
+    margin-top: 12vh;
 }
 #estudantes, #professores{
     display: flex;
     flex-direction: column;
     gap: 4vw;
-    max-width: 570px;
+    align-items: flex-start;
+    width: 60%;
 }
 .professorescard, .estudantescard{
     display: flex;
@@ -531,11 +532,11 @@ h1{
 }
 
 .profile_container {
-    padding: 1vw;
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
-    justify-content: space-around;;
+    gap: 2vw;
+    width: 100%;
+    justify-content: space-evenly;
     align-items: flex-start;
     align-content: flex-start;
 }
@@ -852,22 +853,28 @@ footer {
 
     .grid_item{
         width: 140px;
-        height: 410px;
+        height: 350px;
     }
 
     .profile_image img{
         width: 140px;
     }
 
+    #estudantes, #professores{
+        width: 100%;
+    }
+
     .firstMobile{
         display: flex;
         justify-content: center;
         margin-bottom: -100%;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 
     .heroMobile{
         width: 100%;  /* Width of the rectangle */
-        height: 45vh; /* Height of the rectangle */
+        height: 50vh; /* Height of the rectangle */
         border-radius: var(--edge-roundness);
     }
 
