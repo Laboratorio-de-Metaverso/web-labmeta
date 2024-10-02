@@ -57,7 +57,7 @@ body{
 section{
     overflow-x: hidden;
     /* cada section (sobre, eventos, projetos, artigos, membros, etc...) vai conter margens de 16vh 4vw */
-    padding: 4vh 4vw;
+    padding: 10vh 4vw;
     animation: appear_wscroll;
     animation-timeline: view();
 }
@@ -223,7 +223,6 @@ h1{
 .text_box {
     flex: 1.618;
     padding-right: 4vw;
-    padding-bottom: 50px;
     min-width: 250px;
 }
 
@@ -471,13 +470,12 @@ h1{
     margin-top: 12vh;
 }
 #artigos_importados_horizontal{
-    margin: 8vh 0 8vh 0;
+    margin: 8vh 0 0 0;
     gap: 8vw;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     align-content: space-around;
-    
 }
 .article_chunk{
     width: 40%;
