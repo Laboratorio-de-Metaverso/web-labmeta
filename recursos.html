@@ -1,0 +1,185 @@
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Recursos</title>
+        <link rel="shortcut icon" type="image/x-icon" href="assets/logos/favicon.png">
+    </head>
+    <body>
+        <header class="nav_principal" id="nav_principal" style="animation: none;">
+            <nav class="barra_de_nav">
+                <a href="index.html"><img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta"></a>
+                <div class="menu_toggle" id="menu_toggle">
+                    <input type="checkbox" id="menu36">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="navListContent">
+                    <li><a href="index.html#sobre">Sobre Nós</a></li>
+                    <li><a href="index.html#projetos">Projetos</a></li>
+                    <li><a href="index.html#eventos">Eventos</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="index.html#equipe">Equipe</a></li>
+                    <li><a href="recursos.html">Recursos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+        <script>
+            const menuButton = document.getElementById('menu_toggle');
+            const menu = document.querySelector('navListContent');
+            menuButton.addEventListener("click", function(){
+                menuButton.classList.toggle('active');
+                menu.classList.toggle('active');
+            });
+        </script>
+
+        <section id="projetos">
+            <h1>Recursos</h1> 
+            <hr class="h1_divider">
+            <div id="all_resources">
+            </div>
+        </section>
+        <script>
+            $(document).ready(function() {
+                $('#all_resources').load('assets/lista_recursos.txt', function(response, status, xhr) {
+                    if (status == "error") {
+                        console.error("Error loading the file: " + xhr.status + " " + xhr.statusText);
+                    } else {
+                        var content = $(this).text(); // Get the text content of the loaded file
+                        var lines = content.split('\n'); // Split the content into lines based on newline
+                        var styledContent = ''; // Variable to store styled content
+
+                        for (var i = 0; i < lines.length; i += 5) {
+                            var chunk = lines.slice(i, i + 5);
+                            var chunkContent = '';
+
+                            // Make sure to check the content exists before accessing it
+                            var iframeLink = chunk[2] || '';
+                            var title = chunk[0] || '';
+                            var tags = chunk[1] || '';
+
+                            // Create a class string from tags
+                            var classString = tags ? tags.split('/').map(tag => `tag-${tag.trim()}`).join(' ') : '';
+
+                            // Build content, placing iframe first
+                            chunkContent += `<div class="iframe_container">`;
+                            chunkContent += `<iframe class="resource_link" src="${iframeLink}" scrolling="no"></iframe>`;
+                            chunkContent += `</div>`;
+                            if (tags) {
+                                var tagsArray = tags.split('/'); // Split tags by "/"
+                                var tagsButtons = tagsArray.map(function(tag) {
+                                    return `<button class="tag_button" disabled>${tag.trim()}<input type="checkbox" class="tag_checkbox"></button>`;
+                                }).join(' ');
+                                chunkContent += `<div class="tags_container">${tagsButtons}</div>`;
+                            }
+                            chunkContent += `<h3 class="resource_title resource_title_${i + 1}">${title}</h3>`;
+
+                            // Wrap the chunk content in a <div> with dynamic classes
+                            styledContent += `<div class="resource_container ${classString}">${chunkContent}</div>`;
+                        }
+                        $('#all_resources').html(styledContent); // Replace the content of the element with the styled content
+                    }
+                });
+            });
+        </script>
+        <!------ FOOTER ---------------------------------------------------->
+        <footer id="foot">
+            <div class="fup">
+                <img src="assets/logos/navbar_logo.svg">
+                <a href="">Página Inicial</a>
+                <a href="#sobre">Sobre Nós</a>
+                <a href="#projetos">Projetos</a>
+                <a href="publicacoes.html">Artigos</a>
+                <a href="recursos.html">Recursos</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            <div class="fdown">
+                <!-- <div class="fleft">
+                    <div class="fd"><img src="assets/icons/language-White.svg"><a>Portugues</a></div>
+                </div> -->
+                <div class="logos">
+                    <a class="logos-insta" href="https://www.instagram.com/labmeta.ufpr/"><img src="assets/logos/Intagram.svg" aria-label="Visite o Instagram do LabMeta"></a>
+                    <a class="logos-ln" href="https://www.linkedin.com/company/laborat%C3%B3rio-de-metaverso/"><img href="" src="assets/logos/ln2.svg" aria-label="Visite o LinkedIn oficial do LabMeta"></a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
+
+<style>
+    #all_resources{
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        gap: 2vw;
+        flex-wrap: wrap;
+    }
+    .resource_container{
+        display: flex;
+        flex-direction: column;
+        scroll-snap-align: center;
+        padding: 25px 25px 50px 25px;
+        row-gap: 25px;
+        flex: 1 1 auto;
+        max-width: 500px;
+        max-height: 380px;
+        border-radius: var(--edge-roundness);
+        background-size: cover;
+        background-image: url(assets/fundo/fundopreto.png);
+    }
+    .tag_button{
+        background: rgba(243, 239, 245, 0.35);
+        border-radius: var(--edge-roundness);
+        margin: 0 2px 2px ;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        padding: 5px 10px;
+        letter-spacing: 0.1pt;
+        font-weight: 100;
+        font-size: 16px;
+    }
+    .tag_button:active{
+        background: var(--lm_purple);
+    }
+    .tag_checkbox{
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .resource_title{
+        display: block;
+        height: 2lh;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        text-wrap: balance;
+        font-size: 24px;
+        line-height: 1.25em;
+        font-weight: 700;
+        letter-spacing: -1pt;
+    }
+
+    .resource_link{
+        width: 100%;
+        aspect-ratio: 16/9;
+        border-radius: var(--edge-roundness);
+        border: 0;
+    }
+    .iframe_container{
+        display: flex;
+        opacity: 80%;
+        width: 100%;        
+        overflow: hidden;
+        border-radius: var(--edge-roundness);
+    }
+
+</style>

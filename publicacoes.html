@@ -1,132 +1,132 @@
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Publicações</title>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/logos/favicon.png">
-</head>
-<body>
-    <!--barra de navegacao---------------------------------------------->
-    <header class="nav_principal" id="nav_principal" style="animation: none;">
-        <nav class="barra_de_nav">
-            <a href="index.html"><img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta"></a>
-            <div class="menu_toggle" id="menu_toggle">
-                <input type="checkbox" id="menu36">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="navListContent">
-                <li><a href="index.html#sobre">Sobre Nós</a></li>
-                <li><a href="index.html#projetos">Projetos</a></li>
-                <li><a href="index.html#eventos">Eventos</a></li>
-                <li><a href="publicacoes.html">Publicações</a></li>
-                <li><a href="index.html#equipe">Equipe</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-    <script>
-        const menuButton = document.getElementById('menu_toggle');
-        const menu = document.querySelector('navListContent');
-        menuButton.addEventListener("click", function(){
-            menuButton.classList.toggle('active');
-            menu.classList.toggle('active');
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Publicações</title>
+        <link rel="shortcut icon" type="image/x-icon" href="assets/logos/favicon.png">
+    </head>
+    <body>
+        <!--barra de navegacao---------------------------------------------->
+        <header class="nav_principal" id="nav_principal" style="animation: none;">
+            <nav class="barra_de_nav">
+                <a href="index.html"><img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta"></a>
+                <div class="menu_toggle" id="menu_toggle">
+                    <input type="checkbox" id="menu36">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="navListContent">
+                    <li><a href="index.html#sobre">Sobre Nós</a></li>
+                    <li><a href="index.html#projetos">Projetos</a></li>
+                    <li><a href="index.html#eventos">Eventos</a></li>
+                    <li><a href="publicacoes.html">Publicações</a></li>
+                    <li><a href="index.html#equipe">Equipe</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+        <script>
+            const menuButton = document.getElementById('menu_toggle');
+            const menu = document.querySelector('navListContent');
+            menuButton.addEventListener("click", function(){
+                menuButton.classList.toggle('active');
+                menu.classList.toggle('active');
+            });
+        </script>
+
+    <section id="publications">
+        <h1>Publicações</h1>
+        <hr class="h1_divider">
+        <div id="artigos_importados"></div>
+    </section>
+    <script> // Style every second line
+        $(document).ready(function(){ 
+            $('#artigos_importados').load('assets/lista_artigos.txt', function(response, status, xhr) {
+                if (status == "error") {
+                    console.error("Error loading the file: " + xhr.status + " " + xhr.statusText);
+                } else {
+                    var content = $(this).text(); // Get the text content of the loaded file
+                    var lines = content.split('\n'); // Split the content into lines based on newline
+                    var styledContent = ''; // Variable to store styled content
+                    for (var i = 0; i < lines.length; i++) {
+                        var classNum = (i % 6) + 1; // Assign classes 1 through 6
+                        if (classNum === 1) {
+                            var link = lines[i + 4]; // set line 5 as a variable "link"
+                            styledContent += `<a class="article_title title_${i + 1}" data-abstract-id="${i + 1}" href="${link}" target="_blank">${lines[i]}</a>`; // Class 1
+                        } else if (classNum === 2) {
+                            styledContent += `<span class="second">${lines[i]}</span><br>`; // Class 2
+                        } else if (classNum === 3) {
+                            styledContent += `<span class="third">${lines[i]}</span><br>`; // Class 3
+                        } else if (classNum === 4) {
+                            styledContent += `<div class="abstract" id="abstract_${i - 2}"> <div class="abstract-text"><p class="fourth">${lines[i]}</p></div></div><br>`; // Class 4 (abstract)
+                        } else if (classNum === 5) {
+                            // Placeholder for additional content if needed
+                        } else if (classNum === 6) {
+                            // Placeholder for additional content if needed
+                        }
+                    }
+                    $('#artigos_importados').html(styledContent); // Replace the content of the element with the styled content
+                    
+                    if ($(window).width() >= 1200) {
+                        // Hover detection and class toggle
+                        var hovered_title = 0;
+                        var previousAbstractId = null;
+
+                        $('.article_title').on('mouseenter', function() {
+                            var abstractId = $(this).data('abstract-id');
+
+                            if (previousAbstractId && previousAbstractId !== abstractId) {
+                                $('#abstract_' + previousAbstractId).removeClass('highlightAbstract'); // Remove class from previously highlighted abstract
+                            }
+                            
+                            $('#abstract_' + abstractId).addClass('highlightAbstract'); // Add class to current abstract
+                            previousAbstractId = abstractId; // Update the previously highlighted abstract ID
+                        });
+
+                        $('.article_title').on('mouseleave', function() {
+                            // Optional: Add code for mouse leave action
+                        });
+                                        // Close all highlights when mouse leaves #publications
+                    $('#publications').on('mouseleave', function() {
+                        if (previousAbstractId) {
+                            $('#abstract_' + previousAbstractId).removeClass('highlightAbstract'); // Remove class from currently highlighted abstract
+                            previousAbstractId = null; // Reset the previously highlighted abstract ID
+                        }
+                    });
+                    }
+                }
+            });
         });
     </script>
 
-<section id="publications">
-    <h1>Publicações</h1>
-    <hr class="h1_divider">
-    <div id="artigos_importados"></div>
-</section>
-<script> // Style every second line
-    $(document).ready(function(){ 
-        $('#artigos_importados').load('assets/lista_artigos.txt', function(response, status, xhr) {
-            if (status == "error") {
-                console.error("Error loading the file: " + xhr.status + " " + xhr.statusText);
-            } else {
-                var content = $(this).text(); // Get the text content of the loaded file
-                var lines = content.split('\n'); // Split the content into lines based on newline
-                var styledContent = ''; // Variable to store styled content
-                for (var i = 0; i < lines.length; i++) {
-                    var classNum = (i % 6) + 1; // Assign classes 1 through 6
-                    if (classNum === 1) {
-                        var link = lines[i + 4]; // set line 5 as a variable "link"
-                        styledContent += `<a class="article_title title_${i + 1}" data-abstract-id="${i + 1}" href="${link}" target="_blank">${lines[i]}</a>`; // Class 1
-                    } else if (classNum === 2) {
-                        styledContent += `<span class="second">${lines[i]}</span><br>`; // Class 2
-                    } else if (classNum === 3) {
-                        styledContent += `<span class="third">${lines[i]}</span><br>`; // Class 3
-                    } else if (classNum === 4) {
-                        styledContent += `<div class="abstract" id="abstract_${i - 2}"> <div class="abstract-text"><p class="fourth">${lines[i]}</p></div></div><br>`; // Class 4 (abstract)
-                    } else if (classNum === 5) {
-                        // Placeholder for additional content if needed
-                    } else if (classNum === 6) {
-                        // Placeholder for additional content if needed
-                    }
-                }
-                $('#artigos_importados').html(styledContent); // Replace the content of the element with the styled content
-                
-                if ($(window).width() >= 1200) {
-                    // Hover detection and class toggle
-                    var hovered_title = 0;
-                    var previousAbstractId = null;
-
-                    $('.article_title').on('mouseenter', function() {
-                        var abstractId = $(this).data('abstract-id');
-
-                        if (previousAbstractId && previousAbstractId !== abstractId) {
-                            $('#abstract_' + previousAbstractId).removeClass('highlightAbstract'); // Remove class from previously highlighted abstract
-                        }
-                        
-                        $('#abstract_' + abstractId).addClass('highlightAbstract'); // Add class to current abstract
-                        previousAbstractId = abstractId; // Update the previously highlighted abstract ID
-                    });
-
-                    $('.article_title').on('mouseleave', function() {
-                        // Optional: Add code for mouse leave action
-                    });
-                                    // Close all highlights when mouse leaves #publications
-                $('#publications').on('mouseleave', function() {
-                    if (previousAbstractId) {
-                        $('#abstract_' + previousAbstractId).removeClass('highlightAbstract'); // Remove class from currently highlighted abstract
-                        previousAbstractId = null; // Reset the previously highlighted abstract ID
-                    }
-                });
-                }
-            }
-        });
-    });
-</script>
-
-    <!------ FOOTER ---------------------------------------------------->
-    <footer id="foot">
-        <div class="fup">
-            <img src="assets/logos/navbar_logo.svg">
-            <a href="">Página Inicial</a>
-            <a href="index.html#sobre">Sobre Nós</a>
-            <a href="index.html#projetos">Projetos</a>
-            <a href="publicacoes.html">Artigos</a>
-            <a href="index.html#equipe">Equipe</a>
-            <a href="contato.html">Contato</a>
-        </div>
-        <div class="fdown">
-            <div class="fleft">
-                <div class="fd"><img src="assets/icons/language-White.svg"><a>Portugues</a></div>
+        <!------ FOOTER ---------------------------------------------------->
+        <footer id="foot">
+            <div class="fup">
+                <img src="assets/logos/navbar_logo.svg">
+                <a href="">Página Inicial</a>
+                <a href="index.html#sobre">Sobre Nós</a>
+                <a href="index.html#projetos">Projetos</a>
+                <a href="publicacoes.html">Artigos</a>
+                <a href="index.html#equipe">Equipe</a>
+                <a href="contato.html">Contato</a>
             </div>
-            <div class="logos">
-                <a href="https://www.instagram.com/labmeta.ufpr/"><img src="assets/logos/Intagram.svg" aria-label="Visite o Instagram do LabMeta"></a>
-                <a href="https://www.linkedin.com/company/laborat%C3%B3rio-de-metaverso/"><img href="" src="assets/logos/ln2.svg" aria-label="Visite o LinkedIn oficial do LabMeta"></a>
+            <div class="fdown">
+                <div class="fleft">
+                    <div class="fd"><img src="assets/icons/language-White.svg"><a>Portugues</a></div>
+                </div>
+                <div class="logos">
+                    <a href="https://www.instagram.com/labmeta.ufpr/"><img src="assets/logos/Intagram.svg" aria-label="Visite o Instagram do LabMeta"></a>
+                    <a href="https://www.linkedin.com/company/laborat%C3%B3rio-de-metaverso/"><img href="" src="assets/logos/ln2.svg" aria-label="Visite o LinkedIn oficial do LabMeta"></a>
+                </div>
             </div>
-        </div>
-    </footer>
-</body>
+        </footer>
+    </body>
 </html>
