@@ -5,7 +5,7 @@ Gravação sem edições de modelagem 3D pelo blender de uma janela para projeto
 
 Modelagem comentada no Blender #2
 Blender/Modelagem/Tutorial/Vídeo
-https://www.youtube.com/embed/dEuEuH-qrqA?si=MyqqfGNRuxshMPMS
+https://www.youtube.com/embed/U8B0HHbvtZo?si=37o7nFqTUIJHMWUl
 Gravação sem edições de modelagem 3D pelo blender de um corrimão para projeto pessoal. Comentei os passos realizados e meu processo de modelagem, para fins instrutivos. Parte 2 de 2, em que faço a planificação do modelo e sua configuração para uso modular.
 
 Modelagem comentada no Blender #3
