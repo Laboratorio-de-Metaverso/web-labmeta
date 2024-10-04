@@ -844,6 +844,8 @@ footer {
     justify-items: center;
     background: var(--lm_purple);
     border-radius: var(--edge-roundness);
+    -webkit-border-radius: var(--edge-roundness);
+    -moz-border-radius: var(--edge-roundness);
     margin: 25px 0;
     padding: 5px 10px;
     border: none;
@@ -884,6 +886,8 @@ footer {
     width: 100%;
     aspect-ratio: 16/9;
     border-radius: var(--edge-roundness);
+    -webkit-border-radius: var(--edge-roundness);
+    -moz-border-radius: var(--edge-roundness);
     border: 0;
 }
 .iframe_container{
@@ -893,6 +897,8 @@ footer {
     height: fit-content;
     overflow: hidden;
     border-radius: var(--edge-roundness);
+    -webkit-border-radius: var(--edge-roundness);
+    -moz-border-radius: var(--edge-roundness);
 }
 
 @media (min-width: 895px) {
@@ -906,6 +912,8 @@ footer {
         -webkit-backdrop-filter: blur(0px);
         position: fixed;
         border-radius: var(--edge-roundness);
+        -webkit-border-radius: var(--edge-roundness);
+        -moz-border-radius: var(--edge-roundness);
         padding: 15px;
         align-self: baseline;
         bottom: 4svh;
@@ -1124,6 +1132,7 @@ footer {
 
     .resource_container{
         max-width: 80%;
+        height: max-content;
     }
 
 }
