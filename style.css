@@ -809,7 +809,7 @@ footer {
     padding: 25px 25px 50px 25px;
     row-gap: 25px;
     max-width: 28%;
-    height: 42vh;
+    height: 47vh;
     flex: 1 0 auto;
     border-radius: var(--edge-roundness);
     background-size: cover;
@@ -889,9 +889,8 @@ footer {
 .iframe_container{
     display: flex;
     aspect-ratio: 16/9;
-    opacity: 80%;
     width: 100%;
-    height: max-content; 
+    height: fit-content;
     overflow: hidden;
     border-radius: var(--edge-roundness);
 }
