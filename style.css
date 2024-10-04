@@ -865,6 +865,9 @@ footer {
 #toggle_resources{
     margin: 25px 0 25px;
 }
+#clear_tags_button{
+    display: none;
+}
 .active{
     background: var(--lm_purple);
 }
