@@ -107,7 +107,7 @@
                                 chunkContent += `<div class="tags_container">${tagsButtons}</div>`;
                             }
 
-                            chunkContent += `<h3 class="resource_title resource_title_${i + 1}">${title}</h3>`;
+                            chunkContent += `<a class="resource_title" href="${iframeLink}" target="_blank"><h3 class="resource_title resource_title_${i + 1}">${title}</h3></a>`;
 
                             // Wrap the chunk content in a <div> with dynamic classes
                             styledContent += `<div class="resource_container ${classString}">${chunkContent}</div>`;

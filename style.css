@@ -882,6 +882,10 @@ footer {
     line-height: 1.25em;
     font-weight: 700;
     letter-spacing: -1pt;
+    text-decoration: none;
+}
+.resource_title:hover{
+    text-decoration: underline;
 }
 
 .resource_link{
