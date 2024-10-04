@@ -53,7 +53,7 @@
                         <span>Filtrar</span>
                     </div>
                     <div id="clear_tags_button" class="tag_button_filter">
-                        <img id="filter_icon" src="assets\icons\close.svg">
+                        <img id="filter_icon" src="assets\icons\filter-x.svg">
                         <span>Limpar</span>
                     </div>
                 </div>
@@ -182,10 +182,10 @@
                                 var matchSearch = searchTerm === '' || resourceTitle.includes(searchTerm);
 
                                 if (matchTags && matchSearch) {
-                                    $(this).fadeIn(); // Show with fade effect
+                                    $(this).fadeIn(50); // Show with fade effect
                                     noResults = false
                                 } else {
-                                    $(this).fadeOut(); // Hide with fade effect
+                                    $(this).fadeOut(50); // Hide with fade effect
                                 }
                             });
 
