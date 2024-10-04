@@ -833,6 +833,7 @@ footer {
     font-size: 16px;
     cursor: pointer;
     text-wrap: nowrap;
+    transition: all 0.4s;
 }
 .tag_button_filter{
     display: flex;
@@ -841,7 +842,7 @@ footer {
     align-content: center;
     justify-content: center;
     justify-items: center;
-    background: rgba(243, 239, 245, 0.35);
+    background: var(--lm_purple);
     border-radius: var(--edge-roundness);
     margin: 25px 0;
     padding: 5px 10px;
@@ -854,6 +855,10 @@ footer {
     font-weight: 100;
     font-size: 16px;
     text-wrap: nowrap;
+}
+#tag_controls{
+    display: flex;
+    column-gap: 10px;
 }
 #toggle_resources{
     margin: 25px 0 25px;

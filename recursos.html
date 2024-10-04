@@ -47,9 +47,15 @@
             <div id="search_and_filters">
                 <!-- Search bar for filtering by title -->
                 <input type="text" id="resources_search_bar" placeholder="Pesquisar recursos...">
-                <div id="tag_button_filter" class="tag_button_filter">
-                    <img id="filter_icon" src="assets\icons\filter.svg">
-                    <span>Filtrar</span>
+                <div id="tag_controls">
+                    <div id="tag_button_filter" class="tag_button_filter">
+                        <img id="filter_icon" src="assets\icons\filter.svg">
+                        <span>Filtrar</span>
+                    </div>
+                    <div id="clear_tags_button" class="tag_button_filter">
+                        <img id="filter_icon" src="assets\icons\close.svg">
+                        <span>Limpar</span>
+                    </div>
                 </div>
                 <!-- This section will be populated with tags -->
                 <div id="tag_filters_container"></div>
@@ -114,6 +120,14 @@
                         });
                         $('#tag_filters_container').html(`<div class="filter_tags" id="filter_tags">${tagFiltersContent}</div>`);
 
+                        function toggleClearButton() {
+                            if ($('.tag_button.active').length > 0) {
+                                $('#clear_tags_button').fadeIn(100);
+                            } else {
+                                $('#clear_tags_button').fadeOut(100);
+                            }
+                        }
+
                         // Add event listener for tag filtering
                         $('.tag_button').click(function() {
                             var clickedTag = $(this).attr('data-tag'); // Get the tag that was clicked
@@ -128,6 +142,7 @@
                                 $(`.tag_button[data-tag="${clickedTag}"]`).addClass('active');
                             }
 
+                            toggleClearButton();
                             filterResources();
                         });
 
@@ -162,9 +177,9 @@
                                 var matchSearch = searchTerm === '' || resourceTitle.includes(searchTerm);
 
                                 if (matchTags && matchSearch) {
-                                    $(this).fadeIn(100); // Show with fade effect
+                                    $(this).fadeIn(); // Show with fade effect
                                 } else {
-                                    $(this).fadeOut(100); // Hide with fade effect
+                                    $(this).fadeOut(); // Hide with fade effect
                                 }
                             });
                         }
@@ -181,6 +196,15 @@
                                 icon.attr('src', 'assets/icons/close.svg'); // Change to active icon
                             }
                         });
+
+                        $('#clear_tags_button').click(function() {
+                            $('.tag_button').removeClass('active'); // Remove active class from all tags
+                            toggleClearButton(); // Hide the clear button
+                            filterResources(); // Refresh the resources display
+                        });
+
+                        // Hide the clear button initially
+                        $('#clear_tags_button').hide();
                     }
                 });
             });
