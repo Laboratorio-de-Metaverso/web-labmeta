@@ -44,11 +44,22 @@
         <section id="projetos">
             <h1>Recursos</h1> 
             <hr class="h1_divider">
+            <div id="search_and_filters">
+                <!-- Search bar for filtering by title -->
+                <input type="text" id="resources_search_bar" placeholder="Pesquisar recursos...">
+                <div id="tag_button_filter" class="tag_button_filter">
+                    <img id="filter_icon" src="assets\icons\filter.svg">
+                    <span>Filtrar</span>
+                </div>
+                <!-- This section will be populated with tags -->
+                <div id="tag_filters_container"></div>
+            </div>
             <div id="all_resources">
             </div>
         </section>
         <script>
             $(document).ready(function() {
+                // Load the resources from the text file
                 $('#all_resources').load('assets/lista_recursos.txt', function(response, status, xhr) {
                     if (status == "error") {
                         console.error("Error loading the file: " + xhr.status + " " + xhr.statusText);
@@ -56,7 +67,9 @@
                         var content = $(this).text(); // Get the text content of the loaded file
                         var lines = content.split('\n'); // Split the content into lines based on newline
                         var styledContent = ''; // Variable to store styled content
+                        var allTags = new Set(); // Set to store all unique tags
 
+                        // Loop through the lines and build the resource content
                         for (var i = 0; i < lines.length; i += 5) {
                             var chunk = lines.slice(i, i + 5);
                             var chunkContent = '';
@@ -66,26 +79,108 @@
                             var title = chunk[0] || '';
                             var tags = chunk[1] || '';
 
-                            // Create a class string from tags
-                            var classString = tags ? tags.split('/').map(tag => `tag-${tag.trim()}`).join(' ') : '';
+                            // Create a class string from tags and add tags to the set
+                            var classString = tags ? tags.split('/').map(tag => {
+                                allTags.add(tag.trim()); // Add each tag to the set
+                                return `tag-${tag.trim()}`;
+                            }).join(' ') : '';
 
                             // Build content, placing iframe first
                             chunkContent += `<div class="iframe_container">`;
                             chunkContent += `<iframe class="resource_link" src="${iframeLink}" scrolling="no"></iframe>`;
                             chunkContent += `</div>`;
+
                             if (tags) {
                                 var tagsArray = tags.split('/'); // Split tags by "/"
                                 var tagsButtons = tagsArray.map(function(tag) {
-                                    return `<button class="tag_button" disabled>${tag.trim()}<input type="checkbox" class="tag_checkbox"></button>`;
+                                    return `<span class="tag_button" data-tag="${tag.trim()}">${tag.trim()}</span>`;
                                 }).join(' ');
                                 chunkContent += `<div class="tags_container">${tagsButtons}</div>`;
                             }
+
                             chunkContent += `<h3 class="resource_title resource_title_${i + 1}">${title}</h3>`;
 
                             // Wrap the chunk content in a <div> with dynamic classes
                             styledContent += `<div class="resource_container ${classString}">${chunkContent}</div>`;
                         }
-                        $('#all_resources').html(styledContent); // Replace the content of the element with the styled content
+
+                        // Insert the resources into the #all_resources section
+                        $('#all_resources').html(styledContent);
+
+                        // Create the tag filter buttons at the top of the page
+                        var tagFiltersContent = '';
+                        allTags.forEach(function(tag) {
+                            tagFiltersContent += `<span class="tag_button" data-tag="${tag}">${tag}</span>`;
+                        });
+                        $('#tag_filters_container').html(`<div class="filter_tags" id="filter_tags">${tagFiltersContent}</div>`);
+
+                        // Add event listener for tag filtering
+                        $('.tag_button').click(function() {
+                            var clickedTag = $(this).attr('data-tag'); // Get the tag that was clicked
+
+                            // Toggle active class on all matching tags (both in filter section and within resources)
+                            var isActive = $(this).hasClass('active');
+                            if (isActive) {
+                                // Remove active class from all instances of this tag
+                                $(`.tag_button[data-tag="${clickedTag}"]`).removeClass('active');
+                            } else {
+                                // Add active class to all instances of this tag
+                                $(`.tag_button[data-tag="${clickedTag}"]`).addClass('active');
+                            }
+
+                            filterResources();
+                        });
+
+                        // Search bar filtering
+                        $('#resources_search_bar').on('input', function() {
+                            filterResources();
+                        });
+
+                        // Function to filter resources by active tags and search term
+                        function filterResources() {
+                            var activeTags = [];
+                            var searchTerm = $('#resources_search_bar').val().toLowerCase();
+
+                            // Collect all active tags
+                            $('.tag_button.active').each(function() {
+                                activeTags.push($(this).attr('data-tag'));
+                            });
+
+                            // Show or hide resources based on active tags and search term
+                            $('.resource_container').each(function() {
+                                var resourceTitle = $(this).find('.resource_title').text().toLowerCase();
+                                var resourceTags = $(this).attr('class').split(/\s+/).filter(function(cls) {
+                                    return cls.startsWith('tag-');
+                                }).map(function(cls) {
+                                    return cls.replace('tag-', '');
+                                });
+
+                                var matchTags = activeTags.length === 0 || activeTags.every(function(tag) {
+                                    return resourceTags.includes(tag);
+                                });
+
+                                var matchSearch = searchTerm === '' || resourceTitle.includes(searchTerm);
+
+                                if (matchTags && matchSearch) {
+                                    $(this).fadeIn(100); // Show with fade effect
+                                } else {
+                                    $(this).fadeOut(100); // Hide with fade effect
+                                }
+                            });
+                        }
+                        // Toggle visibility of tag filters
+                        $('#tag_button_filter').click(function() {
+                            var tagContainer = $('#tag_filters_container');
+                            var icon = $('#filter_icon');
+                            
+                            if (tagContainer.is(':visible')) {
+                                tagContainer.slideUp(200);
+                                icon.attr('src', 'assets/icons/filter.svg'); // Change back to original icon
+                            } else {
+                                tagContainer.slideDown(200);
+                                icon.attr('src', 'assets/icons/close.svg'); // Change to active icon
+                            }
+                        });
                     }
                 });
             });
@@ -113,73 +208,3 @@
         </footer>
     </body>
 </html>
-
-<style>
-    #all_resources{
-        display: flex;
-        width: 100%;
-        justify-content: space-evenly;
-        gap: 2vw;
-        flex-wrap: wrap;
-    }
-    .resource_container{
-        display: flex;
-        flex-direction: column;
-        scroll-snap-align: center;
-        padding: 25px 25px 50px 25px;
-        row-gap: 25px;
-        flex: 1 1 auto;
-        max-width: 500px;
-        max-height: 380px;
-        border-radius: var(--edge-roundness);
-        background-size: cover;
-        background-image: url(assets/fundo/fundopreto.png);
-    }
-    .tag_button{
-        background: rgba(243, 239, 245, 0.35);
-        border-radius: var(--edge-roundness);
-        margin: 0 2px 2px ;
-        text-align: center;
-        text-decoration: none;
-        border: none;
-        padding: 5px 10px;
-        letter-spacing: 0.1pt;
-        font-weight: 100;
-        font-size: 16px;
-    }
-    .tag_button:active{
-        background: var(--lm_purple);
-    }
-    .tag_checkbox{
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .resource_title{
-        display: block;
-        height: 2.5lh;
-        overflow: hidden;
-        overflow-wrap: break-word;
-        text-wrap: balance;
-        font-size: 24px;
-        line-height: 1.25em;
-        font-weight: 700;
-        letter-spacing: -1pt;
-    }
-
-    .resource_link{
-        width: 100%;
-        aspect-ratio: 16/9;
-        border-radius: var(--edge-roundness);
-        border: 0;
-    }
-    .iframe_container{
-        display: flex;
-        opacity: 80%;
-        width: 100%;        
-        overflow: hidden;
-        border-radius: var(--edge-roundness);
-    }
-
-</style>
