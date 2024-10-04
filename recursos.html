@@ -59,6 +59,9 @@
                 </div>
                 <!-- This section will be populated with tags -->
                 <div id="tag_filters_container"><img src="assets\icons\loading-loop.svg"></img></div>
+                <div id="no_results_message" style="display: none;">
+                    <br>Nenhum resultado encontrado :(
+                </div>
             </div>
             <div id="all_resources">
             </div>
@@ -161,6 +164,8 @@
                                 activeTags.push($(this).attr('data-tag'));
                             });
 
+                            var noResults = true;
+
                             // Show or hide resources based on active tags and search term
                             $('.resource_container').each(function() {
                                 var resourceTitle = $(this).find('.resource_title').text().toLowerCase();
@@ -178,10 +183,18 @@
 
                                 if (matchTags && matchSearch) {
                                     $(this).fadeIn(); // Show with fade effect
+                                    noResults = false
                                 } else {
                                     $(this).fadeOut(); // Hide with fade effect
                                 }
                             });
+
+                            // Show or hide the "No Results" message
+                            if (noResults) {
+                                $('#no_results_message').show();
+                            } else {
+                                $('#no_results_message').hide();
+                            }
                         }
                         // Toggle visibility of tag filters
                         $('#tag_button_filter').click(function() {
