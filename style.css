@@ -280,7 +280,7 @@ h1{
     scroll-snap-align: center;
     padding: 0px 25px 50px 25px;
     min-width: 250px;
-    max-height: 500px;
+    max-width: 450px;
     margin-right: 25px;
     border-radius: var(--edge-roundness);
     background-size: cover;
