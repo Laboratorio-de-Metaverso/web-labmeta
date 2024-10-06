@@ -1014,6 +1014,7 @@ footer {
         width: 100%;  /* Width of the rectangle */
         height: 50vh; /* Height of the rectangle */
         border-radius: var(--edge-roundness);
+        overflow: hidden;
     }
 
     .videoHero{
