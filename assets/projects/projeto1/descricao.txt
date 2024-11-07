@@ -1,1 +1,1 @@
-Descrição do projeto
+Simulando como operar um moinho em realidade virtual para fins de treinamento.
