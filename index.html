@@ -341,8 +341,16 @@
                             // carrega o link do projeto
                             $.get('assets/projects/projeto' + i + '/link.txt', function(data, status) {
                                 const linkButton = data.trim();
-                                infoButton.href = linkButton;
-                                infoButton.target = "_blank";
+
+                                if (linkButton) {
+                                    infoButton2.href = linkButton;
+                                    infoButton2.target = "_blank";
+                                } else {
+                                    infoButton2.style.display = "none"; // hide button if no link is found
+                                }
+                            }).fail(function() {
+                                // hide button if the request fails
+                                infoButton2.style.display = "none";
                             });
 
                             // create a header text with class
