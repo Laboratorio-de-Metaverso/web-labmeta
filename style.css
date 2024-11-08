@@ -256,6 +256,27 @@ h1{
     flex: auto;
 }
 
+.mission-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4vw;
+    align-items: flex-start; /* Align divs to the top */
+}
+  
+.mission-div {
+flex: 1 1 100%; /* 100% width by default for small screens */
+box-sizing: border-box;
+}
+  
+@media (min-width: 800px) {
+    .mission-container {
+        flex-direction: row; /* Horizontal layout when screen width is 1600px or larger */
+    }
+    .mission-div {
+        flex: 1 1 45%; /* Each div takes half of the container width */
+    }
+}
+
 /* --------projetos-------- */
 .carouselview, .carouselview2{
     display: flex;
