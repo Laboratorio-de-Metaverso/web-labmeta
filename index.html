@@ -351,18 +351,18 @@
                             infoButton2.textContent = "Mais Informações";
                             
                             // carrega o link do projeto
-                            $.get('assets/projects/projeto' + i + '/link.txt', function(data, status) {
+                            $.get('assets/events/event' + i + '/link.txt', function(data, status) {
                                 const linkButton = data.trim();
+                                infoButton2.href = linkButton;
+                                infoButton2.target = "_blank";
 
-                                if (linkButton) {
-                                    infoButton2.href = linkButton;
-                                    infoButton2.target = "_blank";
-                                } else {
-                                    infoButton2.style.display = "none"; // hide button if no link is found
-                                }
-                            }).fail(function() {
-                                // hide button if the request fails
-                                infoButton2.style.display = "none";
+                                // if (linkButton) {
+                                //     infoButton2.href = linkButton;
+                                //     infoButton2.target = "_blank";
+                                // } else {
+                                //     infoButton2.style.display = "none"; // hide button if no link is found
+                                // }
+
                             });
 
                             // create a header text with class
