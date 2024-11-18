@@ -13,6 +13,11 @@ Blender/Modelagem/Tutorial/Vídeo
 https://www.youtube.com/embed/dEuEuH-qrqA?si=65Lsd7zXbOUYDzqL
 Gravação sem edições de modelagem 3D pelo blender de um corrimão para projeto pessoal. Comentei os passos realizados e meu processo de modelagem, para fins instrutivos. Parte 2 de 2, em que faço a planificação do modelo e sua configuração para uso modular.
 
+Metodologia e práticas da Modelagem 3D para RV
+Blender/Modelagem/RV/Tutorial
+https://drive.google.com/file/d/18ptlxFpJVITDQm_04EDRs_PBTTrCs8V8/preview
+Metodologia e práticas da Modelagem 3D para RV por Nickolas Quintino.
+
 Empreendedorismo e start ups na universidade
 Empreendedorismo/Entrevista/Vídeo
 https://www.youtube.com/embed/EMsCLuS21XE?si=emIszFlhb5JJdg4j
