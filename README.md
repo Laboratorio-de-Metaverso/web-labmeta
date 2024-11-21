@@ -1,5 +1,5 @@
 ## Sobre
-Website do laboratório LabMeta de realidade virtual/aumentada e tecnologia 3D
+LabMeta - Laboratório de Metaverso da UFPR. Laboratório de realidade virtual/aumentada e tecnologia 3D.
 
 
 
